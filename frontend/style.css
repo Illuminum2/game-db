@@ -1,0 +1,123 @@
+.game {
+    cursor: pointer;
+
+    transform: rotateX(0deg);
+    /* Horizontal Offset, Vertical Offset, Blur Radius, Color */
+    box-shadow: 0 4px 8px #0000004d;
+
+    /* Need to be in the same transition, does not work otherwise */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.game:hover {
+    transform: rotateX(9deg);
+    box-shadow: 0 12px 20px #00000066;
+}
+
+.game-img {
+    height: 150px;
+    object-fit: cover;
+
+    filter: saturate(0);
+    transition: filter 0.5s ease-in-out;
+
+    /* https://www.geeksforgeeks.org/how-to-apply-gradient-as-the-mask-using-css/?ref=ml_lbp */
+    mask-image: linear-gradient(rgb(24, 23, 23), transparent);
+}
+
+.game:hover .game-img {
+    filter: saturate(1);
+}
+
+.logo-container {
+    /*width: 250px;*/
+    height: 76px;
+    margin-bottom: -38px;
+
+    display: flex;
+    justify-content: center;
+
+    /* position: relative;
+    bottom: 35px; */
+
+    transform: translateY(-35px);
+}
+
+.logo {
+    max-width: 254px;
+    max-height: 76px;
+    object-fit: contain;
+
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.game:hover .logo {
+    transform: scale(1.08);
+}
+
+.properties {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.b-windows { --badge-color: #0078D4; }
+.b-mac { --badge-color: #000000; }
+.b-linux { --badge-color: #E95420; }
+.b-switch { --badge-color: #E60012; }
+.b-playstation { --badge-color: #0070CC; }
+.b-xbox { --badge-color: #0C7A1F; }
+.b-web { --badge-color: #FBBC04; }
+.b-steamvr { --badge-color: #000000; }
+.b-quest { --badge-color: #0081FB; }
+.b-ios { --badge-color: #000000; }
+.b-android { --badge-color: #3DDC84; }
+
+.b-pinball       { --badge-color: #8e44ad; }
+.b-adventure     { --badge-color: #2980b9; }
+.b-indie         { --badge-color: #2ecc71; }
+.b-arcade        { --badge-color: #e74c3c; }
+.b-visual-novel  { --badge-color: #f1c40f; }
+.b-board         { --badge-color: #1abc9c; }
+.b-moba          { --badge-color: #34495e; }
+.b-point-click   { --badge-color: #3498db; }
+.b-fighting      { --badge-color: #c0392b; }
+.b-shooter       { --badge-color: #16a085; }
+.b-music         { --badge-color: #9b59b6; }
+.b-platformer    { --badge-color: #f39c12; }
+.b-puzzle        { --badge-color: #00bcd4; }
+.b-racing        { --badge-color: #2c3e50; }
+.b-rts           { --badge-color: #5dade2; }
+.b-rpg           { --badge-color: #7d3c98; }
+.b-simulator     { --badge-color: #95a5a6; }
+.b-sport         { --badge-color: #e67e22; }
+.b-strategy      { --badge-color: #f39c12; }
+.b-tbs           { --badge-color: #00cec9; }
+.b-tactical      { --badge-color: #1e3799; }
+.b-hack-slash    { --badge-color: #e84393; }
+.b-quiz          { --badge-color: #636e72; }
+
+.badge {
+    background-color: gray;
+    transition: background-color 0.3s ease;
+}
+  
+.badge:hover {
+    background-color: var(--badge-color);
+}
+
+.genre-container {
+    max-width: 140px;
+
+    overflow: scroll;
+    white-space: nowrap;
+
+    /* https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
+    scrollbar-width: none;
+}
