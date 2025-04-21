@@ -97,6 +97,8 @@
 .g-hack-slash    { --badge-color: #e84393; }
 .g-quiz          { --badge-color: #636e72; }
 
+/* Colors from https://www.brandcolorcode.com */
+
 .p-windows { --badge-color: #0078D4; }
 .p-mac { --badge-color: #000000; }
 .p-linux { --badge-color: #E95420; }
@@ -130,4 +132,100 @@
 
     /* https://www.youtube.com/watch?v=Ca8L8iqnmdw */
     mask-image: linear-gradient(to right, black, black 75%, transparent);
+}
+
+/* GLOWING EFFECT */
+/* Using
+https://codetv.dev/blog/animated-css-gradient-border#create-a-gradient-border-using-background-origin-and-conic-gradient
+https://www.amitmerchant.com/gradient-box-shadow-in-css/
+as a starting point */
+
+/* Needed to animate an angle in CSS */
+@property --bg-angle {
+    inherits: false;
+    initial-value: 0deg;
+    /* Defines type */
+    syntax: "<angle>";
+}
+
+@keyframes spin {
+    to {
+        --bg-angle: 360deg;
+    }
+}
+
+.game {
+    /* Use Bootstrap variable values for variables, can be found in devtools */
+    --card-padding: var(--bs-card-spacer-y, 10px);
+    --card-border-width: var(--bs-card-border-radius, 6px);
+    
+    border-color: transparent;
+    position: relative;
+
+    /* Same as .game:hover */
+    &:hover {
+        animation-play-state: running;
+      
+        &::before {
+            animation-play-state: running;
+            opacity: 1;
+        }
+      
+        &::after {
+            animation-play-state: running;
+            opacity: 1;
+        }
+    }
+}
+
+/* Pseudo element */
+.game::before {
+    content: "";
+
+    position: absolute;
+    /* Make pseudo elements bigger by border size and position them correctly, background-origin did not work */
+    top: calc(var(--card-padding) * -1);
+    left: calc(var(--card-padding) * -1);
+    width: calc(100% + var(--card-padding) * 2);
+    height: calc(100% + var(--card-padding) * 2);
+    z-index: -1;
+
+    transition: opacity 1s ease-out;
+    opacity: 0;
+    
+    animation: spin 2.5s infinite linear paused;
+    background:
+      conic-gradient(
+            from var(--bg-angle) in oklch longer hue,
+            oklch(0.85 0.37 0) 0 0
+        )
+        border-box; /* Background up until border edges */
+    
+    filter: blur(20px);
+}
+
+.game::after {
+    content: "";
+  
+    /* Same size as card, same position */
+    position: absolute;
+    top: calc(var(--card-padding) * -1);
+    left: calc(var(--card-padding) * -1);
+    width: calc(100% + var(--card-padding) * 2);
+    height: calc(100% + var(--card-padding) * 2);
+    z-index: -1;
+
+    transition: opacity 0.7s ease;
+    opacity: 0;
+    
+    animation: spin 2.5s infinite linear paused;
+    background:
+      conic-gradient(
+            from var(--bg-angle) in oklch longer hue,
+            oklch(0.85 0.37 0) 0 0
+        )
+        border-box;
+    
+    /* Border radius from .game */
+    border-radius: inherit;
 }
