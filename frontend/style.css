@@ -1,3 +1,7 @@
+.game-container {
+    display: flex;
+}
+
 .game {
     cursor: pointer;
 
@@ -48,60 +52,62 @@
     max-height: 76px;
     object-fit: contain;
 
+    filter: saturate(0);
     transform: scale(1);
-    transition: transform 0.5s ease;
+    transition: filter 0.5s ease-in-out, transform 0.5s ease;
 }
 
 .game:hover .logo {
+    filter: saturate(1);
     transform: scale(1.08);
 }
 
-.properties {
+.properties-container {
     display: flex;
     justify-content: space-between;
 }
 
-.description {
+.description-container {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.b-windows { --badge-color: #0078D4; }
-.b-mac { --badge-color: #000000; }
-.b-linux { --badge-color: #E95420; }
-.b-switch { --badge-color: #E60012; }
-.b-playstation { --badge-color: #0070CC; }
-.b-xbox { --badge-color: #0C7A1F; }
-.b-web { --badge-color: #FBBC04; }
-.b-steamvr { --badge-color: #000000; }
-.b-quest { --badge-color: #0081FB; }
-.b-ios { --badge-color: #000000; }
-.b-android { --badge-color: #3DDC84; }
+.g-pinball       { --badge-color: #8e44ad; }
+.g-adventure     { --badge-color: #2980b9; }
+.g-indie         { --badge-color: #2ecc71; }
+.g-arcade        { --badge-color: #e74c3c; }
+.g-visual-novel  { --badge-color: #f1c40f; }
+.g-board         { --badge-color: #1abc9c; }
+.g-moba          { --badge-color: #34495e; }
+.g-point-click   { --badge-color: #3498db; }
+.g-fighting      { --badge-color: #c0392b; }
+.g-shooter       { --badge-color: #16a085; }
+.g-music         { --badge-color: #9b59b6; }
+.g-platformer    { --badge-color: #f39c12; }
+.g-puzzle        { --badge-color: #00bcd4; }
+.g-racing        { --badge-color: #2c3e50; }
+.g-rts           { --badge-color: #5dade2; }
+.g-rpg           { --badge-color: #7d3c98; }
+.g-simulator     { --badge-color: #95a5a6; }
+.g-sport         { --badge-color: #e67e22; }
+.g-strategy      { --badge-color: #f39c12; }
+.g-tbs           { --badge-color: #00cec9; }
+.g-tactical      { --badge-color: #1e3799; }
+.g-hack-slash    { --badge-color: #e84393; }
+.g-quiz          { --badge-color: #636e72; }
 
-.b-pinball       { --badge-color: #8e44ad; }
-.b-adventure     { --badge-color: #2980b9; }
-.b-indie         { --badge-color: #2ecc71; }
-.b-arcade        { --badge-color: #e74c3c; }
-.b-visual-novel  { --badge-color: #f1c40f; }
-.b-board         { --badge-color: #1abc9c; }
-.b-moba          { --badge-color: #34495e; }
-.b-point-click   { --badge-color: #3498db; }
-.b-fighting      { --badge-color: #c0392b; }
-.b-shooter       { --badge-color: #16a085; }
-.b-music         { --badge-color: #9b59b6; }
-.b-platformer    { --badge-color: #f39c12; }
-.b-puzzle        { --badge-color: #00bcd4; }
-.b-racing        { --badge-color: #2c3e50; }
-.b-rts           { --badge-color: #5dade2; }
-.b-rpg           { --badge-color: #7d3c98; }
-.b-simulator     { --badge-color: #95a5a6; }
-.b-sport         { --badge-color: #e67e22; }
-.b-strategy      { --badge-color: #f39c12; }
-.b-tbs           { --badge-color: #00cec9; }
-.b-tactical      { --badge-color: #1e3799; }
-.b-hack-slash    { --badge-color: #e84393; }
-.b-quiz          { --badge-color: #636e72; }
+.p-windows { --badge-color: #0078D4; }
+.p-mac { --badge-color: #000000; }
+.p-linux { --badge-color: #E95420; }
+.p-switch { --badge-color: #E60012; }
+.p-playstation { --badge-color: #0070CC; }
+.p-xbox { --badge-color: #0C7A1F; }
+.p-web { --badge-color: #FBBC04; }
+.p-steamvr { --badge-color: #000000; }
+.p-quest { --badge-color: #0081FB; }
+.p-ios { --badge-color: #000000; }
+.p-android { --badge-color: #3DDC84; }
 
 .badge {
     background-color: gray;
@@ -113,7 +119,8 @@
 }
 
 .genre-container {
-    max-width: 140px;
+    max-width: auto;
+    margin-right: 10px;
 
     overflow: scroll;
     white-space: nowrap;
@@ -121,5 +128,6 @@
     /* https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll */
     scrollbar-width: none;
 
+    /* https://www.youtube.com/watch?v=Ca8L8iqnmdw */
     mask-image: linear-gradient(to right, black, black 75%, transparent);
 }
