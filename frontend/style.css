@@ -200,6 +200,7 @@ as a starting point */
 
     /* Pseudo element for blurred "shadow" */
     &::before {
+        --card-padding: 10px;
         transition: opacity 1s ease-out;
     
         background:
@@ -214,6 +215,7 @@ as a starting point */
 
     /* Pseudo element for "border" */
     &::after {
+        --card-padding: 5px;
         transition: opacity 0.7s ease;
     
         background:
