@@ -7,6 +7,13 @@
     width: fit-content;
     height: fit-content;
 
+    transform: rotateX(0deg);
+    transition: transform 0.5s ease;
+
+    &:hover {
+        transform: rotateX(9deg);
+    }
+
     &:hover .glow {
         &:before {
             animation-play-state: running;
@@ -25,21 +32,21 @@
     top: 0;
     left: 0; */
     z-index: 1;
-    
+
     cursor: pointer;
 
-    transform: rotateX(0deg);
+    /* transform: rotateX(0deg); */
     /* Horizontal Offset, Vertical Offset, Blur Radius, Color */
-    box-shadow: 0 4px 8px #0000004d;
+    /* box-shadow: 0 4px 8px #0000004d; */
 
     /* Need to be in the same transition, does not work otherwise */
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    /* transition: transform 0.5s ease, box-shadow 0.5s ease; */
 }
 
-.game:hover {
+/* .game:hover {
     transform: rotateX(9deg);
     box-shadow: 0 12px 20px #00000066;
-}
+} */
 
 .game-img {
     height: 150px;
@@ -118,21 +125,21 @@
 .g-tbs           { --badge-color: #00cec9; }
 .g-tactical      { --badge-color: #1e3799; }
 .g-hack-slash    { --badge-color: #e84393; }
-.g-quiz          { --badge-color: #636e72; }
+.g-quiz         { --badge-color: #636e72; }
 
 /* Colors from https://www.brandcolorcode.com */
 
-.p-windows { --badge-color: #0078D4; }
-.p-mac { --badge-color: #000000; }
-.p-linux { --badge-color: #E95420; }
-.p-switch { --badge-color: #E60012; }
-.p-playstation { --badge-color: #0070CC; }
-.p-xbox { --badge-color: #0C7A1F; }
-.p-web { --badge-color: #FBBC04; }
-.p-steamvr { --badge-color: #000000; }
-.p-quest { --badge-color: #0081FB; }
-.p-ios { --badge-color: #000000; }
-.p-android { --badge-color: #3DDC84; }
+.p-windows      { --badge-color: #0078D4; }
+.p-mac          { --badge-color: #000000; }
+.p-linux        { --badge-color: #E95420; }
+.p-switch       { --badge-color: #E60012; }
+.p-playstation  { --badge-color: #0070CC; }
+.p-xbox         { --badge-color: #0C7A1F; }
+.p-web          { --badge-color: #FBBC04; }
+.p-steamvr      { --badge-color: #000000; }
+.p-quest        { --badge-color: #0081FB; }
+.p-ios          { --badge-color: #000000; }
+.p-android      { --badge-color: #3DDC84; }
 
 .badge {
     background-color: gray;
@@ -205,7 +212,7 @@ as a starting point */
     transition: opacity 1s ease-out;
     opacity: 0;
     
-    animation: spin 2.5s infinite linear paused;
+    animation: spin 4s infinite linear paused;
     background:
       conic-gradient(
             from var(--bg-angle) in oklch longer hue,
@@ -233,7 +240,7 @@ as a starting point */
     transition: opacity 0.7s ease;
     opacity: 0;
     
-    animation: spin 2.5s infinite linear paused;
+    animation: spin 4s infinite linear paused;
     background:
       conic-gradient(
             from var(--bg-angle) in oklch longer hue,
