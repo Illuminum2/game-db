@@ -4,8 +4,6 @@
 
 .game-container {
     position: relative;
-    width: fit-content;
-    height: fit-content;
 
     transform: rotateX(0deg);
     transition: transform 0.5s ease;
@@ -87,28 +85,28 @@
     text-overflow: ellipsis;
 }
 
-.g-pinball       { --badge-color: #8e44ad; }
-.g-adventure     { --badge-color: #2980b9; }
-.g-indie         { --badge-color: #2ecc71; }
-.g-arcade        { --badge-color: #e74c3c; }
-.g-visual-novel  { --badge-color: #f1c40f; }
-.g-board         { --badge-color: #1abc9c; }
-.g-moba          { --badge-color: #34495e; }
-.g-point-click   { --badge-color: #3498db; }
-.g-fighting      { --badge-color: #c0392b; }
-.g-shooter       { --badge-color: #16a085; }
-.g-music         { --badge-color: #9b59b6; }
-.g-platformer    { --badge-color: #f39c12; }
-.g-puzzle        { --badge-color: #00bcd4; }
-.g-racing        { --badge-color: #2c3e50; }
-.g-rts           { --badge-color: #5dade2; }
-.g-rpg           { --badge-color: #7d3c98; }
-.g-simulator     { --badge-color: #95a5a6; }
-.g-sport         { --badge-color: #e67e22; }
-.g-strategy      { --badge-color: #f39c12; }
-.g-tbs           { --badge-color: #00cec9; }
-.g-tactical      { --badge-color: #1e3799; }
-.g-hack-slash    { --badge-color: #e84393; }
+.g-pinball      { --badge-color: #8e44ad; }
+.g-adventure    { --badge-color: #2980b9; }
+.g-indie        { --badge-color: #2ecc71; }
+.g-arcade       { --badge-color: #e74c3c; }
+.g-visual-novel { --badge-color: #f1c40f; }
+.g-board        { --badge-color: #1abc9c; }
+.g-moba         { --badge-color: #34495e; }
+.g-point-click  { --badge-color: #3498db; }
+.g-fighting     { --badge-color: #c0392b; }
+.g-shooter      { --badge-color: #16a085; }
+.g-music        { --badge-color: #9b59b6; }
+.g-platformer   { --badge-color: #f39c12; }
+.g-puzzle       { --badge-color: #00bcd4; }
+.g-racing       { --badge-color: #2c3e50; }
+.g-rts          { --badge-color: #5dade2; }
+.g-rpg          { --badge-color: #7d3c98; }
+.g-simulator    { --badge-color: #95a5a6; }
+.g-sport        { --badge-color: #e67e22; }
+.g-strategy     { --badge-color: #f39c12; }
+.g-tbs          { --badge-color: #00cec9; }
+.g-tactical     { --badge-color: #1e3799; }
+.g-hack-slash   { --badge-color: #e84393; }
 .g-quiz         { --badge-color: #636e72; }
 
 /* Colors from https://www.brandcolorcode.com */
