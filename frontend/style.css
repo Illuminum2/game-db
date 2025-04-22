@@ -12,17 +12,26 @@
 
     &:hover {
         transform: rotateX(9deg);
-    }
 
-    &:hover .glow {
-        &::before {
-            animation-play-state: running;
-            opacity: 1;
+        & .game-img {
+            filter: saturate(1);
         }
-      
-        &::after {
-            animation-play-state: running;
-            opacity: 1;
+
+        & .logo {
+            filter: saturate(1);
+            transform: scale(1.08);
+        }
+
+        & .glow {
+            &::before {
+                animation-play-state: running;
+                opacity: 1;
+            }
+          
+            &::after {
+                animation-play-state: running;
+                opacity: 1;
+            }
         }
     }
 }
@@ -47,10 +56,6 @@
     mask-image: linear-gradient(rgb(24, 23, 23), transparent);
 }
 
-.game:hover .game-img {
-    filter: saturate(1);
-}
-
 .logo-container {
     height: 76px;
     margin-bottom: -38px;
@@ -69,11 +74,6 @@
     filter: saturate(0);
     transform: scale(1);
     transition: filter 0.5s ease-in-out, transform 0.5s ease;
-}
-
-.game:hover .logo {
-    filter: saturate(1);
-    transform: scale(1.08);
 }
 
 .properties-container {
