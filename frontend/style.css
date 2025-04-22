@@ -28,25 +28,13 @@
 }
 
 .game {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
     z-index: 1;
 
     cursor: pointer;
 
-    /* transform: rotateX(0deg); */
     /* Horizontal Offset, Vertical Offset, Blur Radius, Color */
     /* box-shadow: 0 4px 8px #0000004d; */
-
-    /* Need to be in the same transition, does not work otherwise */
-    /* transition: transform 0.5s ease, box-shadow 0.5s ease; */
 }
-
-/* .game:hover {
-    transform: rotateX(9deg);
-    box-shadow: 0 12px 20px #00000066;
-} */
 
 .game-img {
     height: 150px;
@@ -64,15 +52,11 @@
 }
 
 .logo-container {
-    /*width: 250px;*/
     height: 76px;
     margin-bottom: -38px;
 
     display: flex;
     justify-content: center;
-
-    /* position: relative;
-    bottom: 35px; */
 
     transform: translateY(-35px);
 }
