@@ -224,5 +224,7 @@ as a starting point */
                 oklch(0.85 0.37 0) 0 0
             )
             border-box;
+        
+        border: 1px solid black;
     }
 }
