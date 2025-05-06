@@ -1,5 +1,5 @@
 const express = requre('express')
-const { default: games } = require('./frontend/data/games.js')
+const { default: games } = require('./data/games.js')
 const gamesService = require('./services/games.service.js')
 
 const app = express()
@@ -64,7 +64,7 @@ app.delete('/game/:id', (req, res) => {
     // Got id
     const id = req.params.id
     
-    if (id) {
+    if (id || id == 0) {
         const result = gamesService.remove(id)
 
         if (result) {
