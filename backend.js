@@ -1,11 +1,16 @@
-const express = requre('express')
-const { default: games } = require('./data/games.js')
-const gamesService = require('./services/games.service.js')
+// const express = require('express')
+import express from 'express'
+// const gamesService = require('./services/games.service.js')
+import gamesService from './services/games.service.js'
 
 const app = express()
 const port = 3000
 
 app.use(express.static('public'))
+
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+})
 
 // Return ALL games
 app.get('/game', (req, res) => {
