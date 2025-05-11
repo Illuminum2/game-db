@@ -142,7 +142,7 @@ const createGameElement = (game) => {
     // {
     //   "id": 0,
     //   "title": "BeatSaber",
-    //   "genres": ["music", "sport", "indie"],
+    //   "genres": [("Music", "music", "music-note-beamed"), ("Sport", "sport", "dribbble"), ("Indie", "indie", "stars")],
     //   "release": new date("2019-02-21"),
     //   "description": "VR rhythm game where your goal is to slash the beats as they are coming at you",
     //   "platforms": [("PCVR (SteamVR)", "steamvr", "steam"), ("Meta Quest", "quest", "meta")],
@@ -158,7 +158,41 @@ const createGameElement = (game) => {
     
 }
 
+const createGenreContainer = (genres) => {
+    // <span class="genre-container">
+    //     <span class="badge rounded-pill genre g-pinball" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pinball">
+    //         <i class="bi bi-circle"></i>
+    //     </span>
+    // </span>
+
+    const genreContainer = document.createElement('span')
+    genreContainer.classList.add('genre-container')
+    
+    genres.forEach(genre => {
+        const iconElement = document.createElement('i')
+        iconElement.classList.add(`bi bi-${genre[2]}`)
+
+        const genreElement = document.createElement('span')
+        genreElement.classList.add(`badge rounded-pill genre g-${genre[1]}`)
+        genreElement.appendChild(iconElement)
+
+        genreElement.setAttribute("data-bs-toggle", "tooltip")
+        genreElement.setAttribute("data-bs-placement", "top")
+        genreElement.setAttribute("data-bs-title", genre[0])
+
+        genreContainer.appendChild(genreElement)
+    });
+
+    return genreContainer
+}
+
 const createPlatformContainer = (platforms) => {
+    // <li class="list-group-item text-bg-dark platform-container">
+    //     <span class="badge platform p-windows" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="PC (Windows)">
+    //         <i class="bi bi-windows"></i>
+    //     </span>
+    // </li>
+    
     const platformContainer = document.createElement('li')
     platformContainer.classList.add('list-group-item text-bg-dark platform-container')
     
