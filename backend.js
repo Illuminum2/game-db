@@ -6,6 +6,7 @@ import gamesService from './services/games.service.js'
 const app = express()
 const port = 3000
 
+app.use(express.json()) // Need this for JSON requests from games-api service
 app.use(express.static('public'))
 
 app.listen(port, () => {
@@ -44,9 +45,9 @@ app.post('/game', (req, res) => {
 })
 
 // Update game
-app.put('/game', (req, res) => {
+app.put('/game/:id', (req, res) => {
     // Got id and game
-    const id = req.params.id // Not use atm
+    const id = req.params.id // Not used atm
     const game = req.body
 
     if (game) {
