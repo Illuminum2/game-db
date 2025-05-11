@@ -81,7 +81,9 @@
     justify-content: space-between;
 }
 
-.description-container {
+.description,
+.developer,
+.publisher {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
