@@ -345,10 +345,12 @@ const createLogoContainer = (title, logo) => {
     return logoContainer
 }
 
-const createReleaseContainer = (release) => {
+const createReleaseContainer = (releaseString) => {
     // <span>
     //     <time datetime="2011-11-18">18.11.2011</time>
     // </span>
+
+    const release = new Date(releaseString)
 
     const year = release.getFullYear()
     // Month and day start with 0 and padding
@@ -364,6 +366,8 @@ const createReleaseContainer = (release) => {
 
     const releaseContainer = document.createElement('span')
     releaseContainer.appendChild(releaseElement)
+
+    return releaseContainer
 }
 
 const createDescriptionElement = (description) => {
