@@ -6,8 +6,8 @@ const gamesContainer = document.querySelector('.games-container')
 // Initialize all bootstrap tooltips
 // From Bootstrap Docs
 const tooltipInit = () => {
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
 
 // Hide tooltips on scroll
@@ -18,13 +18,15 @@ window.addEventListener('scroll', function () {
     );
 }, true);
 
-const addGames = () => {
-    let games = gamesApiService.get();
-    let i = 0
+const addGames = async () => {
+    let games = await gamesApiService.get();
+
+    // Remove all loaded games
+    gamesContainer.innerHTML = ''
+
     games.forEach(game => {
         const gameElement = createGameElement(game)
-        gameContainer.append(div)
-        i++
+        gamesContainer.append(gameElement)
     });
 
     tooltipInit()
