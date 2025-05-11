@@ -3,7 +3,7 @@ const games = [
     {
       "id": 0,
       "title": "BeatSaber",
-      "genres": ["music", "sport", "indie"],
+      "genres": [("Music", "music", "music-note-beamed"), ("Sport", "sport", "dribbble"), ("Indie", "indie", "stars")],
       "release": new date("2019-02-21"),
       "description": "VR rhythm game where your goal is to slash the beats as they are coming at you",
       "platforms": [("PCVR (SteamVR)", "steamvr", "steam"), ("Meta Quest", "quest", "meta")],
@@ -15,7 +15,7 @@ const games = [
     {
       "id": 1,
       "title": "Minecraft",
-      "genres": ["simulator", "adventure", "indie"],
+      "genres": [("Simulator", "simulator", "gear"), ("Adventure", "adventure", "compass"), ("Indie", "indie", "stars")],
       "release": new date("2016-12-19"),
       "description": "Build, explore, and survive in a blocky, open-world sandbox with limitless creativity",
       "platforms": [("PC (Windows)", "windows", "windows"), ("Nintendo Switch", "switch", "nintendo-switch"), ("Play Station", "playstation", "playstation"), ("X-Box", "xbox", "xbox"), ("iOS", "ios", "apple"), ("Android", "android", "android")],
@@ -27,7 +27,7 @@ const games = [
         {
       "id": 2,
       "title": "Bonelab",
-      "genres": ["shooter", "simulator", "adventure", "indie"],
+      "genres": [("Shooter", "shooter", "crosshair"), ("Simulator", "simulator", "gear"), ("Adventure", "adventure", "compass"), ("Indie", "indie", "stars")],
       "release": new date("2022-09-29"),
       "description": "VR game where you embody an outcast escaping fate",
       "platforms": [("PCVR (SteamVR)", "steamvr", "steam"), ("Meta Quest", "quest", "meta")],
