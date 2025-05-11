@@ -339,7 +339,8 @@ const createLogoContainer = (title, logo) => {
     logoImg.setAttribute("alt", `${title} logo`)
 
     const logoContainer = document.createElement('div')
-    logoContainer.classList.add(logo-container)
+    logoContainer.classList.add("logo-container")
+    logoContainer.appendChild(logoImg)
 
     return logoContainer
 }
