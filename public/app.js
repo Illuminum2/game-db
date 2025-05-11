@@ -1,7 +1,7 @@
-import gamesApiService from "./services/games-api.service"
-import createGameElement from "./views/gameView"
+import gamesApiService from "./services/games-api.service.js"
+import createGameElement from "./views/gameView.js"
 
-const gameContainer = document.querySelector('.game-container')
+const gamesContainer = document.querySelector('.games-container')
 
 // Initialize all bootstrap tooltips
 // From Bootstrap Docs
