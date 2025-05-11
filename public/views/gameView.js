@@ -167,16 +167,16 @@ const createGameContainer = (game) => {
 
     const cardBody = createCardBody(genres, platforms, title, logo, release, description, developer, publisher)
 
-    const bgImage = document.createElement('img')
-    bgImage.classList.add('card-img-top img-fluid rounded-top align-items-center game-img')
-    bgImage.setAttribute("src", bg)
-    bgImage.setAttribute("alt", `${title} promotional art`)
+    const bgImg = document.createElement('img')
+    bgImg.classList.add('card-img-top', 'img-fluid', 'rounded-top', 'align-items-center', 'game-img')
+    bgImg.setAttribute("src", bg)
+    bgImg.setAttribute("alt", `${title} promotional art`)
 
     const gameCard = document.createElement('div')
-    gameCard.classList.add('col card text-bg-dark game')
+    gameCard.classList.add('col', 'card', 'text-bg-dark', 'game')
     gameCard.setAttribute("type", "button")
     gameCard.setAttribute("tabindex", "0")
-    gameCard.appendChild(bgImage)
+    gameCard.appendChild(bgImg)
     gameCard.appendChild(cardBody)
 
     const glow = document.createElement('div')
@@ -233,7 +233,7 @@ const createCardBody = (genres, platforms, title, logo, release, description, de
     const devPubContainer = createDevPubContainer(developer, publisher)
 
     const listGroup = document.createElement('ul')
-    listGroup.classList.add('list-group list-group-flush')
+    listGroup.classList.add('list-group', 'list-group-flush')
     listGroup.appendChild(propertiesContainer)
     listGroup.appendChild(descriptionElement)
     listGroup.appendChild(platformContainer)
@@ -264,7 +264,7 @@ const createPropertiesContainer = (genres, release) => {
     const releaseContainer = createReleaseContainer(release)
 
     const propertiesContainer = document.createElement('li')
-    propertiesContainer.classList.add('list-group-item text-bg-dark properties-container')
+    propertiesContainer.classList.add('list-group-item', 'text-bg-dark', 'properties-container')
     propertiesContainer.appendChild(genreContainer)
     propertiesContainer.appendChild(releaseContainer)
 
@@ -283,10 +283,10 @@ const createGenreContainer = (genres) => {
     
     genres.forEach(genre => {
         const iconElement = document.createElement('i')
-        iconElement.classList.add(`bi bi-${genre[2]}`)
+        iconElement.classList.add('bi', `bi-${genre[2]}`)
 
         const genreElement = document.createElement('span')
-        genreElement.classList.add(`badge rounded-pill genre g-${genre[1]}`)
+        genreElement.classList.add('badge', 'rounded-pill', 'genre', `g-${genre[1]}`)
         genreElement.appendChild(iconElement)
 
         genreElement.setAttribute("data-bs-toggle", "tooltip")
@@ -307,14 +307,14 @@ const createPlatformContainer = (platforms) => {
     // </li>
     
     const platformContainer = document.createElement('li')
-    platformContainer.classList.add('list-group-item text-bg-dark platform-container')
+    platformContainer.classList.add('list-group-item', 'text-bg-dark', 'platform-container')
     
     platforms.forEach(platform => {
         const iconElement = document.createElement('i')
-        iconElement.classList.add(`bi bi-${platform[2]}`)
+        iconElement.classList.add('bi', `bi-${platform[2]}`)
 
         const platformElement = document.createElement('span')
-        platformElement.classList.add(`badge platform p-${platform[1]}`)
+        platformElement.classList.add('badge', 'platform', `p-${platform[1]}`)
         platformElement.appendChild(iconElement)
 
         platformElement.setAttribute("data-bs-toggle", "tooltip")
@@ -333,10 +333,10 @@ const createLogoContainer = (title, logo) => {
     //     </img>
     // </div>
 
-    const logo = document.createElement('img')
-    logo.classList.add('logo')
-    logo.setAttribute("src", logo)
-    logo.setAttribute("alt", `${title} logo`)
+    const logoImg = document.createElement('img')
+    logoImg.classList.add('logo')
+    logoImg.setAttribute("src", logo)
+    logoImg.setAttribute("alt", `${title} logo`)
 
     const logoContainer = document.createElement('div')
     logoContainer.classList.add(logo-container)
@@ -371,7 +371,7 @@ const createDescriptionElement = (description) => {
     // </li>
 
     const descriptionElement = document.createElement('li')
-    descriptionElement.classList.add('list-group-item text-bg-dark description')
+    descriptionElement.classList.add('list-group-item', 'text-bg-dark', 'description')
     descriptionElement.innerHTML = description
 
     return descriptionElement
@@ -388,7 +388,7 @@ const createDevPubContainer = (developer, publisher) => {
     // </li>
 
     const devPubContainer = document.createElement('li')
-    devPubContainer.classList.add('list-group-item text-bg-dark')
+    devPubContainer.classList.add('list-group-item', 'text-bg-dark')
     devPubContainer.innerHTML = ```
         <!--list-group-flush + list-group-horizontal currently broken in Bootstrap 5.3 -->
         <!-- https://github.com/twbs/bootstrap/pull/39513/commits/25ce12df7edc05ae23ce45c22e9e10e5a320e64f -->
