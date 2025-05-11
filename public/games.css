@@ -105,13 +105,13 @@
 .g-racing       { --badge-color: #D8120E; }
 .g-rts          { --badge-color: #5D83F8; }
 .g-rpg          { --badge-color: #121F5D; }
-.g-simulator    { --badge-color: #95a5a6; }
-.g-sport        { --badge-color: #e67e22; }
-.g-strategy     { --badge-color: #12bff3; }
-.g-tbs          { --badge-color: #b900ce; }
-.g-tactical     { --badge-color: #1e3799; }
-.g-hack-slash   { --badge-color: #e83333; }
-.g-quiz         { --badge-color: #07b1ef; }
+.g-simulator    { --badge-color: #C7C8C5; }
+.g-sport        { --badge-color: #EE6E33; }
+.g-strategy     { --badge-color: #5C6D65; }
+.g-tbs          { --badge-color: #7B346E; }
+.g-tactical     { --badge-color: #175ACB; }
+.g-hack-slash   { --badge-color: #8D313E; }
+.g-quiz         { --badge-color: #F6B507; }
 
 /* Colors from https://www.brandcolorcode.com */
 
