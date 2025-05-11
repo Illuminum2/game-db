@@ -1,3 +1,8 @@
+body {
+    /* https://ant.design/docs/spec/font?PC */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
 .navbar {
     z-index: 1;
 }
