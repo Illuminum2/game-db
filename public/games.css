@@ -8,6 +8,9 @@
     transition: transform 0.5s ease;
 
     &:hover {
+        /* Glow overlays other games */
+        z-index: 1;
+
         transform: rotateX(9deg);
 
         & .game-img {
