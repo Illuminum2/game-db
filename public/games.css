@@ -209,7 +209,7 @@ as a starting point */
         background:
           conic-gradient(
                 from var(--bg-angle) in oklch longer hue,
-                oklch(0.85 0.37 0) 0 0
+                oklch(0.85 0.37 0), oklch(0.85 0.37 360)
             )
             border-box; /* Background up until border edges */
     
@@ -224,7 +224,7 @@ as a starting point */
         background:
           conic-gradient(
                 from var(--bg-angle) in oklch longer hue,
-                oklch(0.85 0.37 0) 0 0
+                oklch(0.85 0.37 0), oklch(0.85 0.37 360)
             )
             border-box;
         
