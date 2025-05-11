@@ -30,7 +30,7 @@ const update = (game) => {
 }
 
 const remove = (id) => {
-    const index = games.findIndex(g => g.id = id)
+    const index = games.findIndex(g => g.id == id)
 
     if (index >= 0) {
         games.splice(index, 1)

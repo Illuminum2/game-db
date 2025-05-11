@@ -28,7 +28,7 @@ const create = (game) => {
 }
 
 const update = (game) => {
-    const url = `${baseUrl}/${id}`
+    const url = `${baseUrl}/${game.id}`
     return fetch(url, {
         method: 'PUT',
         body: JSON.stringify(game),
