@@ -1,9 +1,7 @@
-import gamesData from '../data/games.js'
+import games from '../data/games.js'
 
-let games = gamesData
-
-// This is fake ID
-let gamesID = gamesData.length
+// This is a fake ID
+let gamesID = games.length
 
 const get = () => {
     return games

@@ -1,4 +1,5 @@
-export default [
+// https://stackoverflow.com/questions/41840766/nodejs-export-default-of-var-array-between-files-not-treated-correctly-at-impo
+const games = [
     {
       "id": 0,
       "title": "BeatSaber",
@@ -30,3 +31,5 @@ export default [
       "platforms": ["PCVR", "Standalone VR"]
     }
   ]
+
+  export default games;
