@@ -143,7 +143,7 @@ const createGameElement = (game) => {
     //   "id": 0,
     //   "title": "BeatSaber",
     //   "genres": [("Music", "music", "music-note-beamed"), ("Sport", "sport", "dribbble"), ("Indie", "indie", "stars")],
-    //   "release": new date("2019-02-21"),
+    //   "release": new Date("2019-02-21"),
     //   "description": "VR rhythm game where your goal is to slash the beats as they are coming at you",
     //   "platforms": [("PCVR (SteamVR)", "steamvr", "steam"), ("Meta Quest", "quest", "meta")],
     //   "developer": "Beat Games",
