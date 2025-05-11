@@ -1,6 +1,6 @@
 {/* 
     <div class="game-container">
-        <div type="button" class="col card text-bg-dark game" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#exampleModal" tabindex="0">
+        <div type="button" class="col card text-bg-dark game" tabindex="0">
             <img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/11/Minecraft-Promotional-Art.jpg" class="card-img-top img-fluid rounded-top align-items-center game-img" alt="Minecraft mountains">
             <div class="card-body">
                 <div class= "logo-container">
@@ -136,9 +136,9 @@
         <div class="glow">
         </div>
     </div>
-*/}
+*/} 
 
-const createGameElement = (game) => {
+const createGameContainer = (game) => {
     // {
     //   "id": 0,
     //   "title": "BeatSaber",
@@ -152,10 +152,123 @@ const createGameElement = (game) => {
     //   "bg": "https://mixed-news.com/en/wp-content/uploads/2023/05/Beat-Saber-Schwerter-Bloecke.jpeg"
     // }
 
+    // <div class="game-container">
+    //     <div type="button" class="col card text-bg-dark game" tabindex="0">
+    //         <img src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/11/Minecraft-Promotional-Art.jpg" class="card-img-top img-fluid rounded-top align-items-center game-img" alt="Minecraft mountains">
+    //         <div class="card-body">
+    //             ...
+    //         </div>
+    //     </div>
+    //     <div class="glow">
+    //     </div>
+    // </div>
+
     const {title, genres, release, description, platforms, developer, publisher, logo, bg} = game
 
+    const cardBody = createCardBody(genres, platforms, title, logo, release, description, developer, publisher)
 
-    
+    const bgImage = document.createElement('img')
+    bgImage.classList.add('card-img-top img-fluid rounded-top align-items-center game-img')
+    bgImage.setAttribute("src", bg)
+    bgImage.setAttribute("alt", `${title} promotional art`)
+
+    const gameCard = document.createElement('div')
+    gameCard.classList.add('col card text-bg-dark game')
+    gameCard.setAttribute("type", "button")
+    gameCard.setAttribute("tabindex", "0")
+    gameCard.appendChild(bgImage)
+    gameCard.appendChild(cardBody)
+
+    const glow = document.createElement('div')
+    glow.classList.add('glow')
+
+    const gameContainer = document.createElement('div')
+    gameContainer.classList.add('game-container')
+    gameContainer.appendChild(gameCard)
+    gameContainer.appendChild(glow)
+
+    return gameContainer
+}
+
+const createCardBody = (genres, platforms, title, logo, release, description, developer, publisher) => {
+    // <div class="card-body">
+    //     <div class= "logo-container">
+    //         <img class="logo" src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa5f649846f59218adca46_minecraft%20logo%20png.png" alt="Minecraft logo">
+    //     </div>
+    //     <ul class="list-group list-group-flush">
+    //         <li class="list-group-item text-bg-dark properties-container">
+    //             <span class="genre-container">
+    //                 <!-- Genres from IGDB -->
+    //                 <span class="badge rounded-pill genre g-pinball" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pinball">
+    //                     <i class="bi bi-circle"></i>
+    //                 </span>
+    //             </span>
+    //             <span>
+    //                 <time datetime="2011-11-18">18.11.2011</time>
+    //             </span>
+    //         </li>
+    //         <li class="list-group-item text-bg-dark description">
+    //             Build, explore, and survive in a blocky, open-world sandbox with limitless creativity.
+    //         </li>
+    //         <li class="list-group-item text-bg-dark platform-container">
+    //             <span class="badge platform p-windows" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="PC (Windows)">
+    //                 <i class="bi bi-windows"></i>
+    //             </span>
+    //         </li>
+    //         <li class="list-group-item text-bg-dark">
+    //             <!--list-group-flush + list-group-horizontal currently broken in Bootstrap 5.3 -->
+    //             <!-- https://github.com/twbs/bootstrap/pull/39513/commits/25ce12df7edc05ae23ce45c22e9e10e5a320e64f -->
+    //             <ul class="list-group list-group-horizontal">
+    //                 <li class="list-group-item text-bg-dark developer">Mojang Studios</li>
+    //                 <li class="list-group-item text-bg-dark publisher">Mojang Studios</li>
+    //             </ul>
+    //         </li>
+    //     </ul>
+    // </div>
+
+    const propertiesContainer = createPropertiesContainer(genres, release)
+    const platformContainer = createPlatformContainer(platforms)
+    const logoContainer = createLogoContainer(title, logo)
+    const descriptionElement = createDescriptionElement(description)
+    const devPubContainer = createDevPubContainer(developer, publisher)
+
+    const listGroup = document.createElement('ul')
+    listGroup.classList.add('list-group list-group-flush')
+    listGroup.appendChild(propertiesContainer)
+    listGroup.appendChild(descriptionElement)
+    listGroup.appendChild(platformContainer)
+    listGroup.appendChild(devPubContainer)
+
+    const cardBody = document.createElement('div')
+    cardBody.classList.add('card-body')
+    cardBody.appendChild(logoContainer)
+    cardBody.appendChild(listGroup)
+
+    return cardBody
+}
+
+const createPropertiesContainer = (genres, release) => {
+    // <li class="list-group-item text-bg-dark properties-container">
+    //     <span class="genre-container">
+    //         <!-- Genres from IGDB -->
+    //         <span class="badge rounded-pill genre g-pinball" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pinball">
+    //             <i class="bi bi-circle"></i>
+    //         </span>
+    //     </span>
+    //     <span>
+    //         <time datetime="2011-11-18">18.11.2011</time>
+    //     </span>
+    // </li>
+
+    const genreContainer = createGenreContainer(genres)
+    const releaseContainer = createReleaseContainer(release)
+
+    const propertiesContainer = document.createElement('li')
+    propertiesContainer.classList.add('list-group-item text-bg-dark properties-container')
+    propertiesContainer.appendChild(genreContainer)
+    propertiesContainer.appendChild(releaseContainer)
+
+    return propertiesContainer
 }
 
 const createGenreContainer = (genres) => {
@@ -214,4 +327,78 @@ const createPlatformContainer = (platforms) => {
     return platformContainer
 }
 
-export default createGameElement
+const createLogoContainer = (title, logo) => {
+    // <div class= "logo-container">
+    //     <img class="logo" src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa5f649846f59218adca46_minecraft%20logo%20png.png" alt="Minecraft logo">
+    //     </img>
+    // </div>
+
+    const logo = document.createElement('img')
+    logo.classList.add('logo')
+    logo.setAttribute("src", logo)
+    logo.setAttribute("alt", `${title} logo`)
+
+    const logoContainer = document.createElement('div')
+    logoContainer.classList.add(logo-container)
+
+    return logoContainer
+}
+
+const createReleaseContainer = (release) => {
+    // <span>
+    //     <time datetime="2011-11-18">18.11.2011</time>
+    // </span>
+
+    const year = release.getFullYear()
+    // Month and day start with 0 and padding
+    const month = String(release.getMonth() + 1).padStart(2, '0');
+    const day = String(release.getDate()).padStart(2, '0');
+
+    const date1 = year + '-' + month + '-' + day
+    const date2 = year + '.' + month + '.' + day
+
+    const releaseElement = document.createElement('time')
+    releaseElement.setAttribute('datetime', date1)
+    releaseElement.innerHTML = date2
+
+    const releaseContainer = document.createElement('span')
+    releaseContainer.appendChild(releaseElement)
+}
+
+const createDescriptionElement = (description) => {
+    // <li class="list-group-item text-bg-dark description">
+    //     Build, explore, and survive in a blocky, open-world sandbox with limitless creativity.
+    // </li>
+
+    const descriptionElement = document.createElement('li')
+    descriptionElement.classList.add('list-group-item text-bg-dark description')
+    descriptionElement.innerHTML = description
+
+    return descriptionElement
+}
+
+const createDevPubContainer = (developer, publisher) => {
+    // <li class="list-group-item text-bg-dark">
+    //     <!--list-group-flush + list-group-horizontal currently broken in Bootstrap 5.3 -->
+    //     <!-- https://github.com/twbs/bootstrap/pull/39513/commits/25ce12df7edc05ae23ce45c22e9e10e5a320e64f -->
+    //     <ul class="list-group list-group-horizontal">
+    //         <li class="list-group-item text-bg-dark developer">Mojang Studios</li>
+    //         <li class="list-group-item text-bg-dark publisher">Mojang Studios</li>
+    //     </ul>
+    // </li>
+
+    const devPubContainer = document.createElement('li')
+    devPubContainer.classList.add('list-group-item text-bg-dark')
+    devPubContainer.innerHTML = ```
+        <!--list-group-flush + list-group-horizontal currently broken in Bootstrap 5.3 -->
+        <!-- https://github.com/twbs/bootstrap/pull/39513/commits/25ce12df7edc05ae23ce45c22e9e10e5a320e64f -->
+        <ul class="list-group list-group-horizontal">
+            <li class="list-group-item text-bg-dark developer">${developer}</li>
+            <li class="list-group-item text-bg-dark publisher">${publisher}</li>
+        </ul>
+    ```
+
+    return devPubContainer
+}
+
+export default createGameContainer
