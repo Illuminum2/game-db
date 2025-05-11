@@ -1,7 +1,3 @@
-.games-container {
-    display: flex;
-}
-
 .game-container {
     position: relative;
 
@@ -88,29 +84,29 @@
     text-overflow: ellipsis;
 }
 
-.g-pinball      { --badge-color: #8e44ad; }
-.g-adventure    { --badge-color: #2980b9; }
-.g-indie        { --badge-color: #2ecc71; }
-.g-arcade       { --badge-color: #e74c3c; }
-.g-visual-novel { --badge-color: #f1c40f; }
-.g-board        { --badge-color: #1abc9c; }
-.g-moba         { --badge-color: #34495e; }
-.g-point-click  { --badge-color: #3498db; }
-.g-fighting     { --badge-color: #c0392b; }
-.g-shooter      { --badge-color: #16a085; }
-.g-music        { --badge-color: #9b59b6; }
-.g-platformer   { --badge-color: #f39c12; }
-.g-puzzle       { --badge-color: #00bcd4; }
-.g-racing       { --badge-color: #2c3e50; }
-.g-rts          { --badge-color: #5dade2; }
-.g-rpg          { --badge-color: #7d3c98; }
+.g-pinball      { --badge-color: #8B42D5; }
+.g-adventure    { --badge-color: #EFA943; }
+.g-indie        { --badge-color: #CB84B0; }
+.g-arcade       { --badge-color: #D5070B; }
+.g-visual-novel { --badge-color: #FAE69D; }
+.g-board        { --badge-color: #545655; }
+.g-moba         { --badge-color: #4A928B; }
+.g-point-click  { --badge-color: #2FD03B; }
+.g-fighting     { --badge-color: #DC0F85; }
+.g-shooter      { --badge-color: #DA2526; }
+.g-music        { --badge-color: #B441FF; }
+.g-platformer   { --badge-color: #7A4F8C; }
+.g-puzzle       { --badge-color: #432977; }
+.g-racing       { --badge-color: #D8120E; }
+.g-rts          { --badge-color: #5D83F8; }
+.g-rpg          { --badge-color: #121F5D; }
 .g-simulator    { --badge-color: #95a5a6; }
 .g-sport        { --badge-color: #e67e22; }
-.g-strategy     { --badge-color: #f39c12; }
-.g-tbs          { --badge-color: #00cec9; }
+.g-strategy     { --badge-color: #12bff3; }
+.g-tbs          { --badge-color: #b900ce; }
 .g-tactical     { --badge-color: #1e3799; }
-.g-hack-slash   { --badge-color: #e84393; }
-.g-quiz         { --badge-color: #636e72; }
+.g-hack-slash   { --badge-color: #e83333; }
+.g-quiz         { --badge-color: #07b1ef; }
 
 /* Colors from https://www.brandcolorcode.com */
 
