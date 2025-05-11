@@ -37,6 +37,7 @@
 }
 
 .game {
+    width: 18rem;
     z-index: 1;
 
     cursor: pointer;
