@@ -29,7 +29,7 @@ app.post('/game', (req, res) => {
 
     if (game)
     {
-        const result = gamesServie.create(game)
+        const result = gamesService.create(game)
 
         res.status(201).send({message: 'Game created'})
     }
