@@ -140,16 +140,16 @@
 
 const createGameElement = (game) => {
     // {
-    //     "id": 0,
-    //     "title": "BeatSaber",
-    //     "genres": ["music", "sport", "indie"],
-    //     "release": new date("2019-02-21"),
-    //     "description": "VR rhythm game where your goal is to slash the beats as they are coming at you",
-    //     "platforms": ["steamvr", "quest"],
-    //     "developer": "Beat Games",
-    //     "publisher": "Beat Games",
-    //     "logo": "https://static.wikia.nocookie.net/logopedia/images/c/cc/Beatsaber.png/revision/latest?cb=20220430122542",
-    //     "bg": "https://mixed-news.com/en/wp-content/uploads/2023/05/Beat-Saber-Schwerter-Bloecke.jpeg"
+    //   "id": 0,
+    //   "title": "BeatSaber",
+    //   "genres": ["music", "sport", "indie"],
+    //   "release": new date("2019-02-21"),
+    //   "description": "VR rhythm game where your goal is to slash the beats as they are coming at you",
+    //   "platforms": [("PCVR (SteamVR)", "steamvr", "steam"), ("Meta Quest", "quest", "meta")],
+    //   "developer": "Beat Games",
+    //   "publisher": "Beat Games",
+    //   "logo": "https://static.wikia.nocookie.net/logopedia/images/c/cc/Beatsaber.png/revision/latest?cb=20220430122542",
+    //   "bg": "https://mixed-news.com/en/wp-content/uploads/2023/05/Beat-Saber-Schwerter-Bloecke.jpeg"
     // }
 
     const {title, genres, release, description, platforms, developer, publisher, logo, bg} = game
@@ -164,15 +164,15 @@ const createPlatformContainer = (platforms) => {
     
     platforms.forEach(platform => {
         const iconElement = document.createElement('i')
-        iconElement.classList.add(`bi bi-${platform}`)
+        iconElement.classList.add(`bi bi-${platform[2]}`)
 
         const platformElement = document.createElement('span')
-        platformElement.classList.add(`badge platform p-${platform}`)
+        platformElement.classList.add(`badge platform p-${platform[1]}`)
         platformElement.appendChild(iconElement)
 
         platformElement.setAttribute("data-bs-toggle", "tooltip")
         platformElement.setAttribute("data-bs-placement", "top")
-        platformElement.setAttribute("data-bs-title", platform)
+        platformElement.setAttribute("data-bs-title", platform[0])
 
         platformContainer.appendChild(platformElement)
     });
