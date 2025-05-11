@@ -389,14 +389,14 @@ const createDevPubContainer = (developer, publisher) => {
 
     const devPubContainer = document.createElement('li')
     devPubContainer.classList.add('list-group-item', 'text-bg-dark')
-    devPubContainer.innerHTML = ```
+    devPubContainer.innerHTML = `
         <!--list-group-flush + list-group-horizontal currently broken in Bootstrap 5.3 -->
         <!-- https://github.com/twbs/bootstrap/pull/39513/commits/25ce12df7edc05ae23ce45c22e9e10e5a320e64f -->
         <ul class="list-group list-group-horizontal">
             <li class="list-group-item text-bg-dark developer">${developer}</li>
             <li class="list-group-item text-bg-dark publisher">${publisher}</li>
         </ul>
-    ```
+    `
 
     return devPubContainer
 }
