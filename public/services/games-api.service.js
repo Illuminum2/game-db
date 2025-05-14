@@ -11,7 +11,7 @@ const get = () => {
 }
 
 const getOne = (id) => {
-    const url = `${baseUrl}/${id}`
+    const url = `${baseUrl}${id}`
     return fetch(url)
     .then(httpResponse => httpResponse.json())
 }
@@ -28,7 +28,7 @@ const create = (game) => {
 }
 
 const update = (game) => {
-    const url = `${baseUrl}/${game.id}`
+    const url = `${baseUrl}${game.id}`
     return fetch(url, {
         method: 'PUT',
         body: JSON.stringify(game),
@@ -39,7 +39,7 @@ const update = (game) => {
 }
 
 const remove = (id) => {
-    const url = `${baseUrl}/${id}`
+    const url = `${baseUrl}${id}`
     return fetch(url, {
         method: 'DELETE',
         
