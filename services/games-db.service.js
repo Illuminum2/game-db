@@ -47,6 +47,10 @@ const getOne = (id) => {
 const create = (game) => {
     // Destructoring
     const {title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
+
+    genres = JSON.stringify(genres)
+    platforms = JSON.stringify(platforms)
+
     const values = [title, genres, releaseDate, description, platforms, developer, publisher, logo, bg]
 
     connection
@@ -57,6 +61,10 @@ const create = (game) => {
 
 const update = (game) => {
     const {title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
+
+    genres = JSON.stringify(genres)
+    platforms = JSON.stringify(platforms)
+
     const values = [title, genres, releaseDate, description, platforms, developer, publisher, logo, bg]
 
     connection
