@@ -3,6 +3,8 @@ import createGameElement from "./views/gameView.js"
 
 const gamesContainer = document.querySelector('.games-container')
 
+const gameList = []
+
 // Initialize all bootstrap tooltips
 // From Bootstrap Docs
 const tooltipInit = () => {
@@ -23,13 +25,25 @@ const addAllGames = async () => {
 
     // Remove all loaded games
     gamesContainer.innerHTML = ''
+    while (gameList.length > 0)
+    {
+        gameList.pop()
+    }
 
-    games.forEach(game => {
-        const gameElement = createGameElement(game)
-        gamesContainer.append(gameElement)
+    games.forEach(gameData => {
+        const game = new Game(gameData);
+        gameList.push(game);
+
+        gamesContainer.append(game.element);
     });
 
     tooltipInit()
+}
+class Game {
+    constructor(gameData) {
+        this.data = gameData; // All game properties
+        this.element = createGameElement(gameData); // The HTML game elment
+    }
 }
 
 addAllGames()
