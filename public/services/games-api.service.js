@@ -44,7 +44,12 @@ const remove = (id) => {
         method: 'DELETE',
         
     })
-    .then(httpResponse => httpResponse.json())
+    .then(httpResponse => {
+        if (httpResponse.status === 204) {
+            return { success: true };
+        }
+        return httpResponse.json()
+    })
 }
 
 export default {get, getOne, create, update, remove}
