@@ -163,9 +163,9 @@ const createGameContainer = (game) => {
     //     </div>
     // </div>
 
-    const {title, genres, release, description, platforms, developer, publisher, logo, bg} = game
+    const {title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
 
-    const cardBody = createCardBody(genres, platforms, title, logo, release, description, developer, publisher)
+    const cardBody = createCardBody(genres, platforms, title, logo, releaseDate, description, developer, publisher)
 
     const bgImg = document.createElement('img')
     bgImg.classList.add('card-img-top', 'img-fluid', 'rounded-top', 'align-items-center', 'game-img')
@@ -190,7 +190,7 @@ const createGameContainer = (game) => {
     return gameContainer
 }
 
-const createCardBody = (genres, platforms, title, logo, release, description, developer, publisher) => {
+const createCardBody = (genres, platforms, title, logo, releaseDate, description, developer, publisher) => {
     // <div class="card-body">
     //     <div class= "logo-container">
     //         <img class="logo" src="https://cdn.prod.website-files.com/64ea57571d50b02423c4505d/64fa5f649846f59218adca46_minecraft%20logo%20png.png" alt="Minecraft logo">
@@ -226,7 +226,7 @@ const createCardBody = (genres, platforms, title, logo, release, description, de
     //     </ul>
     // </div>
 
-    const propertiesContainer = createPropertiesContainer(genres, release)
+    const propertiesContainer = createPropertiesContainer(genres, releaseDate)
     const platformContainer = createPlatformContainer(platforms)
     const logoContainer = createLogoContainer(title, logo)
     const descriptionElement = createDescriptionElement(description)
@@ -247,7 +247,7 @@ const createCardBody = (genres, platforms, title, logo, release, description, de
     return cardBody
 }
 
-const createPropertiesContainer = (genres, release) => {
+const createPropertiesContainer = (genres, releaseDate) => {
     // <li class="list-group-item text-bg-dark properties-container">
     //     <span class="genre-container">
     //         <!-- Genres from IGDB -->
@@ -261,7 +261,7 @@ const createPropertiesContainer = (genres, release) => {
     // </li>
 
     const genreContainer = createGenreContainer(genres)
-    const releaseContainer = createReleaseContainer(release)
+    const releaseContainer = createReleaseContainer(releaseDate)
 
     const propertiesContainer = document.createElement('li')
     propertiesContainer.classList.add('list-group-item', 'text-bg-dark', 'properties-container')
@@ -280,7 +280,7 @@ const createGenreContainer = (genres) => {
 
     const genreContainer = document.createElement('span')
     genreContainer.classList.add('genre-container')
-    
+
     genres.forEach(genre => {
         const iconElement = document.createElement('i')
         iconElement.classList.add('bi', `bi-${genre[2]}`)
@@ -292,7 +292,7 @@ const createGenreContainer = (genres) => {
         genreElement.setAttribute("data-bs-toggle", "tooltip")
         genreElement.setAttribute("data-bs-placement", "top")
         genreElement.setAttribute("data-bs-title", genre[0])
-
+        
         genreContainer.appendChild(genreElement)
     });
 
@@ -350,15 +350,8 @@ const createReleaseContainer = (releaseString) => {
     //     <time datetime="2011-11-18">18.11.2011</time>
     // </span>
 
-    const release = new Date(releaseString)
-
-    const year = release.getFullYear()
-    // Month and day start with 0 and padding
-    const month = String(release.getMonth() + 1).padStart(2, '0');
-    const day = String(release.getDate()).padStart(2, '0');
-
-    const date1 = year + '-' + month + '-' + day
-    const date2 = year + '.' + month + '.' + day
+    const date1 = releaseString
+    const date2 = releaseString.replaceAll('-', '.')
 
     const releaseElement = document.createElement('time')
     releaseElement.setAttribute('datetime', date1)

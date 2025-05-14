@@ -16,8 +16,14 @@ const get = () => {
     .then(([rows, fields]) => {
         rows.forEach(row => {
             // Convert strings back to arrays
-            row.genres = JSON.parse(row.genres);
-            row.platforms = JSON.parse(row.platforms);
+            row.genres = JSON.parse(row.genres)
+            row.platforms = JSON.parse(row.platforms)
+
+            const releaseDate = new Date(row.releaseDate)
+            const year = releaseDate.getFullYear() // Crash here because not defined, conversion issue probably
+            const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
+            const day = String(releaseDate.getDate()).padStart(2, '0');
+            row.releaseDate = year + '-' + month + '-' + day
         });
 
         return rows
@@ -35,8 +41,14 @@ const getOne = (id) => {
     .then(row => {
         if (row) {
             // Convert strings back to arrays
-            row.genres = JSON.parse(row.genres);
-            row.platforms = JSON.parse(row.platforms);
+            row.genres = JSON.parse(row.genres)
+            row.platforms = JSON.parse(row.platforms)
+
+            const releaseDate = new Date(row.releaseDate)
+            const year = releaseDate.getFullYear()
+            const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
+            const day = String(releaseDate.getDate()).padStart(2, '0');
+            row.releaseDate = year + '-' + month + '-' + day
 
             return row
         }
@@ -51,7 +63,13 @@ const create = (game) => {
     genres = JSON.stringify(genres)
     platforms = JSON.stringify(platforms)
 
-    const values = [title, genres, releaseDate, description, platforms, developer, publisher, logo, bg]
+    const year = releaseDate.getFullYear()
+    // Month and day start with 0 and padding
+    const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
+    const day = String(releaseDate.getDate()).padStart(2, '0');
+    const date = year + '-' + month + '-' + day
+
+    const values = [title, genres, date, description, platforms, developer, publisher, logo, bg]
 
     connection
     .then(conn => {
@@ -64,12 +82,18 @@ const create = (game) => {
 }
 
 const update = (game) => {
-    const {title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
+    const {id, title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
 
     genres = JSON.stringify(genres)
     platforms = JSON.stringify(platforms)
 
-    const values = [title, genres, releaseDate, description, platforms, developer, publisher, logo, bg]
+    const year = releaseDate.getFullYear()
+    // Month and day start with 0 and padding
+    const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
+    const day = String(releaseDate.getDate()).padStart(2, '0');
+    const date = year + '-' + month + '-' + day
+
+    const values = [title, genres, date, description, platforms, developer, publisher, logo, bg, id]
 
     return connection
     .then(conn => {
