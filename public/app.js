@@ -18,7 +18,7 @@ window.addEventListener('scroll', function () {
     );
 }, true);
 
-const addGames = async () => {
+const addAllGames = async () => {
     let games = await gamesApiService.get();
 
     // Remove all loaded games
@@ -32,4 +32,4 @@ const addGames = async () => {
     tooltipInit()
 }
 
-addGames()
+addAllGames()
