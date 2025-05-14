@@ -2,6 +2,7 @@ import gamesApiService from "./services/games-api.service.js"
 import createGameElement from "./views/gameView.js"
 
 const gamesContainer = document.querySelector('.games-container')
+const deleteRadioBtn = document.getElementById('delete')
 
 const gameList = []
 
@@ -33,6 +34,26 @@ const addAllGames = async () => {
     games.forEach(gameData => {
         const game = new Game(gameData);
         gameList.push(game);
+
+        // EventListener for delete
+        game.element.addEventListener('click', () => {
+            // Check if delete is selected in radio
+            // https://community.wappler.io/t/need-help-with-dynamically-checked-bootstrap-radio-buttons/13509/6
+            if (deleteRadioBtn.checked) {
+                // Delete via API
+                gamesApiService.remove(game.data.id);
+
+                // Remove HTML element
+                game.delete();
+                
+                // Remove Game object from gameList
+                const index = gameList.indexOf(game);
+                // Check if found (https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript)
+                if (index > -1) {
+                    gameList.splice(index, 1);
+                }
+            }
+        });
 
         gamesContainer.append(game.element);
     });
