@@ -13,7 +13,15 @@ const get = () => {
         const result = conn.query('SELECT * FROM Game')
         return result
     })
-    .then(([rows, fields]) => rows)
+    .then(([rows, fields]) => {
+        rows.forEach(row => {
+            // Convert strings back to arrays
+            row.genres = JSON.parse(row.genres);
+            row.platforms = JSON.parse(row.platforms);
+        });
+
+        return rows
+    })
 }
 
 const getOne = (id) => {
@@ -23,11 +31,16 @@ const getOne = (id) => {
         return result
     })
     .then(([rows, fields]) => rows)
-    .then(rows => rows && rows.length > 0 ? rows[0] : {})
+    .then(rows => rows && rows.length > 0 ? rows[0] : null) // Return null if not found
     .then(row => {
-        console.log(row[2]) // undefined
-        console.log(row[5]) // undefined
-        return row
+        if (row) {
+            // Convert strings back to arrays
+            row.genres = JSON.parse(row.genres);
+            row.platforms = JSON.parse(row.platforms);
+
+            return row
+        }
+        return {}; // Return empty {} if row is null
     })
 }
 
