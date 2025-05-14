@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mariadb:10.11
+    # restart: always # Starts up when stopped by system restart/power down or similar
+    environment:
+      MYSQL_ROOT_PASSWORD: secureDoNotChangeMe
+
+    ports:
+        - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    # restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  db-data:
