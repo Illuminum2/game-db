@@ -55,7 +55,11 @@ const create = (game) => {
 
     connection
     .then(conn => {
-        conn.query('INSERT INTO Game (title, genres, releaseDate, description, platforms, developer, publisher, logo, bg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', values)
+        return conn.query('INSERT INTO Game (title, genres, releaseDate, description, platforms, developer, publisher, logo, bg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', values)
+    })
+    .then(([result]) => {
+        // Need to return promise
+        return { id: result.insertId, affected: result.affectedRows }
     })
 }
 
@@ -67,16 +71,24 @@ const update = (game) => {
 
     const values = [title, genres, releaseDate, description, platforms, developer, publisher, logo, bg]
 
-    connection
+    return connection
     .then(conn => {
-        conn.query('UPDATE Game SET name = ?, genres = ?, releaseDate = ?, platforms = ?, developer = ?, publisher = ?, logo = ?, bg = ?', values)
+        return conn.query('UPDATE Game SET title = ?, genres = ?, releaseDate = ?, platforms = ?, developer = ?, publisher = ?, logo = ?, bg = ? WHERE id = ?', values)
+    })
+    .then(([result]) => {
+        // Need to return promise
+        return { id: result.insertId, affected: result.affectedRows }
     })
 }
 
 const remove = (id) => {
-        connection
+    return connection
     .then(conn => {
-        conn.query('DELETE Game FROM Game WHERE id = ?', id)
+        return conn.query('DELETE Game FROM Game WHERE id = ?', id)
+    })
+    .then(([result]) => {
+        // Need to return promise
+        return { id: result.insertId, affected: result.affectedRows }
     })
 }
 
