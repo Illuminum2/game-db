@@ -44,6 +44,25 @@ class Game {
         this.data = gameData; // All game properties
         this.element = createGameElement(gameData); // The HTML game elment
     }
+    
+    edit(gameData) {
+        this.data = gameData;
+        this.element = createGameElement(gameData);
+    }
+    
+    delete() {
+        this.element.remove();
+    }
+    
+    show() {
+        this.element.removeAttribute('hidden');
+    }
+    
+    search(query) {
+        if (!this.data.title.includes(query)) {
+            this.element.setAttribute('hidden', '');
+        }
+    }
 }
 
 addAllGames()
