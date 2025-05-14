@@ -1,4 +1,8 @@
 node_modules
-frontend/test.css
-frontend/test.html
 package-lock.json
+public/test.html.old
+public/test.css.old
+public/test2.html.old
+index.js.old
+services/games.service.js.old
+data/games.js.old
