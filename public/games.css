@@ -142,6 +142,8 @@
 }
 
 .badge {
+    margin-right: 5px;
+
     background-color: gray;
     transition: background-color 0.3s ease;
 
