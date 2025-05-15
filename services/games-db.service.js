@@ -60,16 +60,18 @@ const create = (game) => {
     // Destructoring
     const {title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
 
-    genres = JSON.stringify(genres)
-    platforms = JSON.stringify(platforms)
+    let genresData = JSON.stringify(genres)
+    let platformsData = JSON.stringify(platforms)
 
-    const year = releaseDate.getFullYear()
+    const release = new Date(game.releaseDate)
+
+    const year = release.getFullYear()
     // Month and day start with 0 and padding
-    const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
-    const day = String(releaseDate.getDate()).padStart(2, '0');
+    const month = String(release.getMonth() + 1).padStart(2, '0');
+    const day = String(release.getDate()).padStart(2, '0');
     const date = year + '-' + month + '-' + day
 
-    const values = [title, genres, date, description, platforms, developer, publisher, logo, bg]
+    const values = [title, genresData, date, description, platformsData, developer, publisher, logo, bg]
 
     connection
     .then(conn => {
@@ -84,16 +86,18 @@ const create = (game) => {
 const update = (game) => {
     const {id, title, genres, releaseDate, description, platforms, developer, publisher, logo, bg} = game
 
-    genres = JSON.stringify(genres)
-    platforms = JSON.stringify(platforms)
+    let genresData = JSON.stringify(genres)
+    let platformsData = JSON.stringify(platforms)
 
-    const year = releaseDate.getFullYear()
+    const release = new Date(game.releaseDate)
+
+    const year = release.getFullYear()
     // Month and day start with 0 and padding
-    const month = String(releaseDate.getMonth() + 1).padStart(2, '0');
-    const day = String(releaseDate.getDate()).padStart(2, '0');
+    const month = String(release.getMonth() + 1).padStart(2, '0');
+    const day = String(release.getDate()).padStart(2, '0');
     const date = year + '-' + month + '-' + day
 
-    const values = [title, genres, date, description, platforms, developer, publisher, logo, bg, id]
+    const values = [title, genresData, date, description, platformsData, developer, publisher, logo, bg, id]
 
     return connection
     .then(conn => {
