@@ -26,7 +26,8 @@ body {
     flex-direction: column;
 }
 
-.btn-outline-platform {
+.btn-outline-platform,
+.btn-outline-genre {
     --bs-btn-color: var(--badge-color);
     --bs-btn-border-color: var(--badge-color);
     --bs-btn-hover-bg: var(--badge-color);
@@ -44,7 +45,8 @@ body {
     --bs-btn-active-border-color: #000;
 }
 
-.platform-select {
+.platform-select,
+.genre-select {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
