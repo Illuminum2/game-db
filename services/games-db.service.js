@@ -101,7 +101,7 @@ const update = (game) => {
 
     return connection
     .then(conn => {
-        return conn.query('UPDATE Game SET title = ?, genres = ?, releaseDate = ?, platforms = ?, developer = ?, publisher = ?, logo = ?, bg = ? WHERE id = ?', values)
+        return conn.query('UPDATE Game SET title = ?, genres = ?, releaseDate = ?, description = ?, platforms = ?, developer = ?, publisher = ?, logo = ?, bg = ? WHERE id = ?', values)
     })
     .then(([result]) => {
         // Need to return promise
