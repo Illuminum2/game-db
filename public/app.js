@@ -49,9 +49,12 @@ const genres = [
 
 // Initialize all bootstrap tooltips
 // From Bootstrap Docs
+let tooltipTriggerList
+let tooltipList
+
 const tooltipInit = () => {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
 
 // Hide tooltips on scroll
@@ -61,6 +64,10 @@ window.addEventListener('scroll', function () {
         tooltip => tooltip.hide()
     )
 }, true)
+
+const editRadioBtn = document.getElementById('edit')
+const editForm = document.querySelector('#editModal form')
+let currentEditGame = null // Store the game being edited
 
 const addAllGames = async () => {
     let games = await gamesApiService.get()
@@ -76,10 +83,9 @@ const addAllGames = async () => {
         const game = new Game(gameData)
         gameList.push(game)
 
-        // EventListener for delete
+        // EventListener for game clicks
         game.element.addEventListener('click', () => {
             // Check if delete is selected in radio
-            // https://community.wappler.io/t/need-help-with-dynamically-checked-bootstrap-radio-buttons/13509/6
             if (deleteRadioBtn.checked) {
                 // Delete via API
                 gamesApiService.remove(game.data.id)
@@ -89,10 +95,65 @@ const addAllGames = async () => {
                 
                 // Remove Game object from gameList
                 const index = gameList.indexOf(game)
-                // Check if found (https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript)
                 if (index > -1) {
                     gameList.splice(index, 1)
                 }
+            }
+            // Check if edit is selected in radio
+            else if (editRadioBtn.checked) {
+                currentEditGame = game
+                
+                // Fill the edit form with game data
+                document.getElementById('editInputTitle').value = game.data.title
+                
+                // Clear all checkboxes
+                document.querySelectorAll('#editModal .genre-select input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false
+                })
+                
+                // Check genres that match game data
+                game.data.genres.forEach(gameGenre => {
+                    // Upper case first letter of genre id
+                    const genreId = gameGenre[1].charAt(0).toUpperCase() + genreId.slice(1)
+                    const elementId = `editSelectPlatform${genreId}`
+                    const checkbox = document.getElementById(elementId)
+                    if (checkbox) {
+                        checkbox.checked = true
+                    }
+                })
+                
+                // Format date for input
+                const releaseDate = new Date(game.data.releaseDate)
+                const year = releaseDate.getFullYear()
+                const month = String(releaseDate.getMonth() + 1).padStart(2, '0')
+                const day = String(releaseDate.getDate()).padStart(2, '0')
+                document.getElementById('editInputReleaseDate').value = year + '-' + month + '-' + day
+                
+                document.getElementById('editInputDescription').value = game.data.description
+                
+                // Clear all platform checkboxes
+                document.querySelectorAll('#editModal .platform-select input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false
+                })
+                
+                // Check platforms that match game data
+                game.data.platforms.forEach(gamePlatform => {
+                    const platformId = gamePlatform[1].charAt(0).toUpperCase() + platformId.slice(1)
+                    const elementId = `editSelectPlatform${platformId}`
+                    const checkbox = document.getElementById(elementId)
+                    if (checkbox) {
+                        checkbox.checked = true
+                    }
+                })
+                
+                document.getElementById('editInputDeveloper').value = game.data.developer
+                document.getElementById('editInputPublisher').value = game.data.publisher
+                document.getElementById('editInputLogo').value = game.data.logo
+                document.getElementById('editInputBg').value = game.data.bg
+                
+                // Show the edit modal
+                const editModal = new bootstrap.Modal(document.getElementById('editModal'))
+                editModal.show()
             }
         })
 
@@ -101,6 +162,66 @@ const addAllGames = async () => {
 
     tooltipInit()
 }
+
+// Edit game form handler
+editForm.addEventListener('submit', (event) => {
+    // No page refresh on submit
+    event.preventDefault()
+    
+    // if (!currentEditGame)
+    //    return
+    
+    const title = document.getElementById('editInputTitle').value
+    const selectedGenres = []
+    document.querySelectorAll('#editModal .genre-select input[type="checkbox"]:checked').forEach(checkbox => {
+        const genreId = checkbox.id.replace('editSelectGenre', '').toLowerCase()
+
+        genres.forEach(genre => {
+            if (genre[1] === genreId) {
+                selectedGenres.push(genre)
+            }
+        })
+    })
+    const releaseDate = new Date(document.getElementById('editInputReleaseDate').value)
+    const description = document.getElementById('editInputDescription').value
+    const selectedPlatforms = []
+    document.querySelectorAll('#editModal .platform-select input[type="checkbox"]:checked').forEach(checkbox => {
+        const platformId = checkbox.id.replace('editSelectPlatform', '').toLowerCase()
+        
+        platforms.forEach(platform => {
+            if (platform[1] === platformId) {
+                selectedPlatforms.push(platform)
+            }
+        })
+    })
+    const developer = document.getElementById('editInputDeveloper').value
+    const publisher = document.getElementById('editInputPublisher').value
+    const logo = document.getElementById('editInputLogo').value
+    const bg = document.getElementById('editInputBg').value
+    
+    // Update game object
+    const updatedGame = {
+        id: currentEditGame.data.id, // Include id for updating
+        title,
+        genres: selectedGenres,
+        releaseDate,
+        description,
+        platforms: selectedPlatforms,
+        developer,
+        publisher,
+        logo,
+        bg
+    }
+
+    gamesApiService.update(updatedGame)
+    .then(() => {
+        editForm.reset()
+        
+        currentEditGame = null
+        
+        addAllGames()
+    })
+})
 
 class Game {
     constructor(gameData) {
