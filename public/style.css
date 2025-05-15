@@ -21,6 +21,11 @@ body {
     margin-right: 10px;
 }
 
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
 .btn-outline-platform {
     --bs-btn-color: var(--badge-color);
     --bs-btn-border-color: var(--badge-color);

@@ -64,70 +64,94 @@
           </div>
           <div class="modal-body">
             <form>
-              <div class="mb-3">
-                <label for="addInputTitle" class="form-label">Title</label>
-                <input type="text" class="form-control" id="addInputTitle" aria-describedby="titleHelp">
-              </div>
-              <div class="mb-3 platform-select">
-                <input type="checkbox" class="btn-check" id="selectPlatformWindows" autocomplete="off">
-                <label class="btn btn-outline-platform p-windows" for="selectPlatformWindows">
-                  <i class="bi bi-windows"></i>
-                  Windows
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformMac" autocomplete="off">
-                <label class="btn btn-outline-platform p-dark" for="selectPlatformMac">
-                  <i class="bi bi-apple"></i>
-                  Mac
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformLinux" autocomplete="off">
-                <label class="btn btn-outline-platform p-linux" for="selectPlatformLinux">
-                  <i class="bi bi-ubuntu"></i>
-                  Linux
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformSwitch" autocomplete="off">
-                <label class="btn btn-outline-platform p-switch" for="selectPlatformSwitch">
-                  <i class="bi bi-nintendo-switch"></i>
-                  Switch
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformPlaystation" autocomplete="off">
-                <label class="btn btn-outline-platform p-playstation" for="selectPlatformPlaystation">
-                  <i class="bi bi-playstation"></i>
-                  Playstation
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformXbox" autocomplete="off">
-                <label class="btn btn-outline-platform p-xbox" for="selectPlatformXbox">
-                  <i class="bi bi-xbox"></i>
-                  Xbox
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformWeb" autocomplete="off">
-                <label class="btn btn-outline-platform p-web" for="selectPlatformWeb">
-                  <i class="bi bi-browser-chrome"></i>
-                  Web
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformSteamVR" autocomplete="off">
-                <label class="btn btn-outline-platform p-dark" for="selectPlatformSteamVR">
-                  <i class="bi bi-steam"></i>
-                  SteamVR
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformQuest" autocomplete="off">
-                <label class="btn btn-outline-platform p-quest" for="selectPlatformQuest">
-                  <i class="bi bi-meta"></i>
-                  Meta Quest
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformIOS" autocomplete="off">
-                <label class="btn btn-outline-platform p-dark" for="selectPlatformIOS">
-                  <i class="bi bi-apple"></i>
-                  iOS
-                </label>
-                <input type="checkbox" class="btn-check" id="selectPlatformAndroid" autocomplete="off">
-                <label class="btn btn-outline-platform p-android" for="selectPlatformAndroid">
-                  <i class="bi bi-android"></i>
-                  Android
-                </label>
-              </div>
-              <div class="mb-3">
-                <label for="addInputReleaseDate" class="form-label">Release date</label>
-                <input type="date" class="form-control" id="addInputReleaseDate" aria-describedby="releaseDateHelp">
+              <div class="input-group">
+                <div class="mb-3">
+                  <label for="addInputTitle" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="addInputTitle" aria-describedby="titleHelp">
+                </div>
+                <div class="mb-3 platform-select">
+                  <input type="checkbox" class="btn-check" id="selectPlatformWindows" autocomplete="off">
+                  <label class="btn btn-outline-platform p-windows" for="selectPlatformWindows">
+                    <i class="bi bi-windows"></i>
+                    Windows
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformMac" autocomplete="off">
+                  <label class="btn btn-outline-platform p-dark" for="selectPlatformMac">
+                    <i class="bi bi-apple"></i>
+                    Mac
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformLinux" autocomplete="off">
+                  <label class="btn btn-outline-platform p-linux" for="selectPlatformLinux">
+                    <i class="bi bi-ubuntu"></i>
+                    Linux
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformSwitch" autocomplete="off">
+                  <label class="btn btn-outline-platform p-switch" for="selectPlatformSwitch">
+                    <i class="bi bi-nintendo-switch"></i>
+                    Switch
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformPlaystation" autocomplete="off">
+                  <label class="btn btn-outline-platform p-playstation" for="selectPlatformPlaystation">
+                    <i class="bi bi-playstation"></i>
+                    Playstation
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformXbox" autocomplete="off">
+                  <label class="btn btn-outline-platform p-xbox" for="selectPlatformXbox">
+                    <i class="bi bi-xbox"></i>
+                    Xbox
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformWeb" autocomplete="off">
+                  <label class="btn btn-outline-platform p-web" for="selectPlatformWeb">
+                    <i class="bi bi-browser-chrome"></i>
+                    Web
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformSteamVR" autocomplete="off">
+                  <label class="btn btn-outline-platform p-dark" for="selectPlatformSteamVR">
+                    <i class="bi bi-steam"></i>
+                    SteamVR
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformQuest" autocomplete="off">
+                  <label class="btn btn-outline-platform p-quest" for="selectPlatformQuest">
+                    <i class="bi bi-meta"></i>
+                    Meta Quest
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformIOS" autocomplete="off">
+                  <label class="btn btn-outline-platform p-dark" for="selectPlatformIOS">
+                    <i class="bi bi-apple"></i>
+                    iOS
+                  </label>
+                  <input type="checkbox" class="btn-check" id="selectPlatformAndroid" autocomplete="off">
+                  <label class="btn btn-outline-platform p-android" for="selectPlatformAndroid">
+                    <i class="bi bi-android"></i>
+                    Android
+                  </label>
+                </div>
+                <div class="mb-3">
+                  <label for="addInputReleaseDate" class="form-label">Release date</label>
+                  <input type="date" class="form-control" id="addInputReleaseDate" aria-describedby="releaseDateHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="addInputDescription" class="form-label">Description</label>
+                  <textarea class="form-control" id="addInputDescription" aria-label="Description"></textarea>
+                </div>
+                <div class="mb-3 row g-2">
+                  <div class="col-md">
+                    <label for="addInputDeveloper" class="form-label">Developer</label>
+                    <input type="text" class="form-control" id="addInputDeveloper">
+                  </div>
+                  <div class="col-md">
+                    <label for="addInputPublisher" class="form-label">Publisher</label>
+                    <input type="text" class="form-control" id="addInputPublisher">
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="addInputLogo" class="form-label">Logo image link</label>
+                  <input type="text" class="form-control" id="addInputLogo" aria-describedby="developerHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="addInputBg" class="form-label">Background image link</label>
+                  <input type="text" class="form-control" id="addInputBg" aria-describedby="publisherHelp">
+                </div>
               </div>
               <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
             </form>
