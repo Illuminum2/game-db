@@ -89,8 +89,30 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
-.g-pinball      { --badge-color: #8B42D5; }
+.g-pinball      { --badge-color: #9D4EDD; }
+.g-adventure    { --badge-color: #FF9505; }
+.g-indie        { --badge-color: #FF6B6B; }
+.g-arcade       { --badge-color: #FF0054; }
+.g-visual-novel { --badge-color: #7678ED; }
+.g-board        { --badge-color: #7D8491; }
+.g-moba         { --badge-color: #00B4D8; }
+.g-point-click  { --badge-color: #38B000; }
+.g-fighting     { --badge-color: #E71D36; }
+.g-shooter      { --badge-color: #FB5607; }
+.g-music        { --badge-color: #8338EC; }
+.g-platformer   { --badge-color: #3A86FF; }
+.g-puzzle       { --badge-color: #9381FF; }
+.g-racing       { --badge-color: #F94144; }
+.g-rts          { --badge-color: #4361EE; }
+.g-rpg          { --badge-color: #5E60CE; }
+.g-simulator    { --badge-color: #4D908E; }
+.g-sport        { --badge-color: #43AA8B; }
+.g-strategy     { --badge-color: #577590; }
+.g-tbs          { --badge-color: #9F86C0; }
+.g-tactical     { --badge-color: #2A6F97; }
+.g-hack-slash   { --badge-color: #B5179E; }
+.g-quiz         { --badge-color: #FFBE0B; }
+/* .g-pinball      { --badge-color: #8B42D5; }
 .g-adventure    { --badge-color: #EFA943; }
 .g-indie        { --badge-color: #CB84B0; }
 .g-arcade       { --badge-color: #D5070B; }
@@ -112,7 +134,7 @@
 .g-tbs          { --badge-color: #7B346E; }
 .g-tactical     { --badge-color: #175ACB; }
 .g-hack-slash   { --badge-color: #8D313E; }
-.g-quiz         { --badge-color: #F6B507; }
+.g-quiz         { --badge-color: #F6B507; } */
 
 /* Colors from https://www.brandcolorcode.com */
 
