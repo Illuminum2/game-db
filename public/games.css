@@ -128,16 +128,16 @@
 .p-ios          { --badge-color: #000000; }
 .p-android      { --badge-color: #3DDC84; }
 
-.p-steamvr::after {
+.badge.p-steamvr::after {
     content: " VR";
 }
 
-.p-quest::after {
+.badge.p-quest::after {
     content: " Quest";
 
 }
 
-.p-ios::after {
+.badge.p-ios::after {
     content: "iOS";
 }
 

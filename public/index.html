@@ -43,7 +43,7 @@
               </div>
             </li>
             <li>
-              <button type="button" class="btn btn-outline-success">Add</button>
+              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -53,6 +53,88 @@
         </div>
       </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addModalLabel">Add a game</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="addInputTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="addInputTitle" aria-describedby="titleHelp">
+              </div>
+              <div class="mb-3 platform-select">
+                <input type="checkbox" class="btn-check" id="selectPlatformWindows" autocomplete="off">
+                <label class="btn btn-outline-platform p-windows" for="selectPlatformWindows">
+                  <i class="bi bi-windows"></i>
+                  Windows
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformMac" autocomplete="off">
+                <label class="btn btn-outline-platform p-dark" for="selectPlatformMac">
+                  <i class="bi bi-apple"></i>
+                  Mac
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformLinux" autocomplete="off">
+                <label class="btn btn-outline-platform p-linux" for="selectPlatformLinux">
+                  <i class="bi bi-ubuntu"></i>
+                  Linux
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformSwitch" autocomplete="off">
+                <label class="btn btn-outline-platform p-switch" for="selectPlatformSwitch">
+                  <i class="bi bi-nintendo-switch"></i>
+                  Switch
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformPlaystation" autocomplete="off">
+                <label class="btn btn-outline-platform p-playstation" for="selectPlatformPlaystation">
+                  <i class="bi bi-playstation"></i>
+                  Playstation
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformXbox" autocomplete="off">
+                <label class="btn btn-outline-platform p-xbox" for="selectPlatformXbox">
+                  <i class="bi bi-xbox"></i>
+                  Xbox
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformWeb" autocomplete="off">
+                <label class="btn btn-outline-platform p-web" for="selectPlatformWeb">
+                  <i class="bi bi-browser-chrome"></i>
+                  Web
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformSteamVR" autocomplete="off">
+                <label class="btn btn-outline-platform p-dark" for="selectPlatformSteamVR">
+                  <i class="bi bi-steam"></i>
+                  SteamVR
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformQuest" autocomplete="off">
+                <label class="btn btn-outline-platform p-quest" for="selectPlatformQuest">
+                  <i class="bi bi-meta"></i>
+                  Meta Quest
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformIOS" autocomplete="off">
+                <label class="btn btn-outline-platform p-dark" for="selectPlatformIOS">
+                  <i class="bi bi-apple"></i>
+                  iOS
+                </label>
+                <input type="checkbox" class="btn-check" id="selectPlatformAndroid" autocomplete="off">
+                <label class="btn btn-outline-platform p-android" for="selectPlatformAndroid">
+                  <i class="bi bi-android"></i>
+                  Android
+                </label>
+              </div>
+              <div class="mb-3">
+                <label for="addInputReleaseDate" class="form-label">Release date</label>
+                <input type="date" class="form-control" id="addInputReleaseDate" aria-describedby="releaseDateHelp">
+              </div>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="container">    
       <!-- Games -->

@@ -20,3 +20,29 @@ body {
     margin-left: 5px;
     margin-right: 10px;
 }
+
+.btn-outline-platform {
+    --bs-btn-color: var(--badge-color);
+    --bs-btn-border-color: var(--badge-color);
+    --bs-btn-hover-bg: var(--badge-color);
+    --bs-btn-border-color: var(--badge-color);
+    --bs-btn-active-bg: var(--badge-color);
+    --bs-btn-active-border-color: var(--badge-color);
+    --bs-btn-disabled-color: var(--badge-color);
+    --bs-btn-disabled-border-color: var(--badge-color);
+}
+
+/* Exception for darker colors as they are not visible as an outline */
+.p-dark {
+    --badge-color: #fff;
+    --bs-btn-active-bg: #000;
+    --bs-btn-active-border-color: #000;
+}
+
+.platform-select {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 10px;
+}
