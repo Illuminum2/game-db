@@ -114,8 +114,9 @@ const addAllGames = async () => {
                 // Check genres that match game data
                 game.data.genres.forEach(gameGenre => {
                     // Upper case first letter of genre id
-                    const genreId = gameGenre[1].charAt(0).toUpperCase() + genreId.slice(1)
-                    const elementId = `editSelectPlatform${genreId}`
+                    const genreName = gameGenre[1]
+                    const genreId = genreName.charAt(0).toUpperCase() + genreName.slice(1)
+                    const elementId = `editSelectGenre${genreId}`
                     const checkbox = document.getElementById(elementId)
                     if (checkbox) {
                         checkbox.checked = true
@@ -138,7 +139,8 @@ const addAllGames = async () => {
                 
                 // Check platforms that match game data
                 game.data.platforms.forEach(gamePlatform => {
-                    const platformId = gamePlatform[1].charAt(0).toUpperCase() + platformId.slice(1)
+                    const platformName = gamePlatform[1]
+                    const platformId = platformName.charAt(0).toUpperCase() + platformName.slice(1)
                     const elementId = `editSelectPlatform${platformId}`
                     const checkbox = document.getElementById(elementId)
                     if (checkbox) {
