@@ -50,7 +50,8 @@
     height: 150px;
     object-fit: cover;
 
-    filter: saturate(0);
+    /* CHANGE */
+    filter: saturate(0.5);
     transition: filter 0.5s ease-in-out;
 
     /* https://www.geeksforgeeks.org/how-to-apply-gradient-as-the-mask-using-css/?ref=ml_lbp */
@@ -72,7 +73,8 @@
     max-height: 70px;
     object-fit: contain;
 
-    filter: saturate(0);
+    /* CHANGE */
+    filter: saturate(0.7);
     transform: scale(1);
     transition: filter 0.5s ease-in-out, transform 0.5s ease;
 }
