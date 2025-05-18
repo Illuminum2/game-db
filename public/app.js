@@ -2,10 +2,16 @@ import gamesApiService from "./services/games-api.service.js"
 import createGameElement from "./views/gameView.js"
 
 const gamesContainer = document.querySelector('.games-container')
+
 const deleteRadioBtn = document.getElementById('delete')
+
 const addForm = document.querySelector('#addModal form')
 
-const searchBox = document.querySelector('form[role="search"] input[type="search"]');
+const editRadioBtn = document.getElementById('edit')
+const editForm = document.querySelector('#editModal form')
+let currentEditGame = null // Store the game being edited
+
+const searchBox = document.querySelector('form[role="search"] input[type="search"]')
 
 const gameList = []
 
@@ -67,9 +73,31 @@ window.addEventListener('scroll', function () {
     )
 }, true)
 
-const editRadioBtn = document.getElementById('edit')
-const editForm = document.querySelector('#editModal form')
-let currentEditGame = null // Store the game being edited
+class Game {
+    constructor(gameData) {
+        this.data = gameData // All game properties
+        this.element = createGameElement(gameData) // The HTML game elment
+    }
+    
+    edit(gameData) {
+        this.data = gameData
+        this.element = createGameElement(gameData)
+    }
+    
+    delete() {
+        this.element.remove()
+    }
+    
+    show() {
+        this.element.removeAttribute('hidden')
+    }
+    
+    search(query) {
+        if (!this.data.title.toLowerCase().includes(query)) {
+            this.element.setAttribute('hidden', '')
+        }
+    }
+}
 
 const addAllGames = async () => {
     let games = await gamesApiService.get()
@@ -167,108 +195,6 @@ const addAllGames = async () => {
     tooltipInit()
 }
 
-// Edit game form handler
-editForm.addEventListener('submit', (event) => {
-    // No page refresh on submit
-    event.preventDefault()
-    
-    // if (!currentEditGame)
-    //    return
-    
-    const title = document.getElementById('editInputTitle').value
-    const selectedGenres = []
-    document.querySelectorAll('#editModal .genre-select input[type="checkbox"]:checked').forEach(checkbox => {
-        const genreId = checkbox.id.replace('editSelectGenre', '').toLowerCase()
-
-        genres.forEach(genre => {
-            if (genre[1] === genreId) {
-                selectedGenres.push(genre)
-            }
-        })
-    })
-    const releaseDate = new Date(document.getElementById('editInputReleaseDate').value)
-    const description = document.getElementById('editInputDescription').value
-    const selectedPlatforms = []
-    document.querySelectorAll('#editModal .platform-select input[type="checkbox"]:checked').forEach(checkbox => {
-        const platformId = checkbox.id.replace('editSelectPlatform', '').toLowerCase()
-        
-        platforms.forEach(platform => {
-            if (platform[1] === platformId) {
-                selectedPlatforms.push(platform)
-            }
-        })
-    })
-    const developer = document.getElementById('editInputDeveloper').value
-    const publisher = document.getElementById('editInputPublisher').value
-    const logo = document.getElementById('editInputLogo').value
-    const bg = document.getElementById('editInputBg').value
-    
-    // Update game object
-    const updatedGame = {
-        id: currentEditGame.data.id, // Include id for updating
-        title,
-        genres: selectedGenres,
-        releaseDate,
-        description,
-        platforms: selectedPlatforms,
-        developer,
-        publisher,
-        logo,
-        bg
-    }
-
-    gamesApiService.update(updatedGame)
-    .then(() => {
-        editForm.reset()
-        
-        currentEditGame = null
-        
-        addAllGames()
-    })
-})
-
-searchBox.addEventListener('keyup', () => {
-    // Get search text and convert to lower case for search
-    const searchText = searchBox.value.toLowerCase();
-    
-    gameList.forEach(game => {
-        // First show all games
-        game.show()
-        
-        // Exclude empty search box
-        if (searchText !== '') {
-            // Hide games that do not match
-            game.search(searchText);
-        }
-    });
-});
-
-class Game {
-    constructor(gameData) {
-        this.data = gameData // All game properties
-        this.element = createGameElement(gameData) // The HTML game elment
-    }
-    
-    edit(gameData) {
-        this.data = gameData
-        this.element = createGameElement(gameData)
-    }
-    
-    delete() {
-        this.element.remove()
-    }
-    
-    show() {
-        this.element.removeAttribute('hidden')
-    }
-    
-    search(query) {
-        if (!this.data.title.toLowerCase().includes(query)) {
-            this.element.setAttribute('hidden', '')
-        }
-    }
-}
-
 // Add game form handler
 addForm.addEventListener('submit', (event) => {
     // No page refresh on submit
@@ -333,4 +259,111 @@ addForm.addEventListener('submit', (event) => {
     })
 })
 
-addAllGames()
+
+// Edit game form handler
+editForm.addEventListener('submit', (event) => {
+    // No page refresh on submit
+    event.preventDefault()
+    
+    // if (!currentEditGame)
+    //    return
+    
+    const title = document.getElementById('editInputTitle').value
+    const selectedGenres = []
+    document.querySelectorAll('#editModal .genre-select input[type="checkbox"]:checked').forEach(checkbox => {
+        const genreId = checkbox.id.replace('editSelectGenre', '').toLowerCase()
+
+        genres.forEach(genre => {
+            if (genre[1] === genreId) {
+                selectedGenres.push(genre)
+            }
+        })
+    })
+    const releaseDate = new Date(document.getElementById('editInputReleaseDate').value)
+    const description = document.getElementById('editInputDescription').value
+    const selectedPlatforms = []
+    document.querySelectorAll('#editModal .platform-select input[type="checkbox"]:checked').forEach(checkbox => {
+        const platformId = checkbox.id.replace('editSelectPlatform', '').toLowerCase()
+        
+        platforms.forEach(platform => {
+            if (platform[1] === platformId) {
+                selectedPlatforms.push(platform)
+            }
+        })
+    })
+    const developer = document.getElementById('editInputDeveloper').value
+    const publisher = document.getElementById('editInputPublisher').value
+    const logo = document.getElementById('editInputLogo').value
+    const bg = document.getElementById('editInputBg').value
+    
+    // Update game object
+    const updatedGame = {
+        id: currentEditGame.data.id, // Include id for updating
+        title,
+        genres: selectedGenres,
+        releaseDate,
+        description,
+        platforms: selectedPlatforms,
+        developer,
+        publisher,
+        logo,
+        bg
+    }
+
+    gamesApiService.update(updatedGame)
+    .then(() => {
+        editForm.reset()
+        
+        currentEditGame = null
+        
+        addAllGames()
+    })
+})
+
+const search = () => {
+    // Get search text and convert to lower case for search
+    const searchText = searchBox.value.toLowerCase()
+    
+    /*
+    // https://stackoverflow.com/questions/8135132/how-to-encode-url-parameters // Not needed, urlParams.set already does this
+    urlParams.set('search', searchBox.value) // Circumvent toLowerCase()
+    // window.location.search = urlParams.toString() // Doesn't work, causes reload
+    window.history.replaceState({}, '', '?' + urlParams.toString())
+    */
+
+    window.history.pushState({}, '', `?search=${encodeURIComponent(searchBox.value)}`)
+
+    gameList.forEach(game => {
+        // First show all games
+        game.show()
+        
+        // Exclude empty search box
+        if (searchText !== '') {
+            // Hide games that do not match
+            game.search(searchText)
+        }
+    })
+}
+
+// On key release in search
+searchBox.addEventListener('keyup', () => {
+    search()
+})
+
+// On search enter, can't use searchBox
+document.querySelector('form[role="search"]').addEventListener('submit', (event) => {
+    // No page refresh on submit
+    event.preventDefault()
+})
+
+await addAllGames()
+
+const urlParams = new URLSearchParams(window.location.search);
+const searchParam = urlParams.get('search')
+
+if (searchParam) {
+    // Set the search box input value
+    searchBox.value = searchParam
+    
+    search()
+}
