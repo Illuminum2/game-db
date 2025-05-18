@@ -124,6 +124,7 @@ const addAllGames = async () => {
                 game.delete()
                 
                 // Remove Game object from gameList
+                // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array-in-javascript
                 const index = gameList.indexOf(game)
                 if (index > -1) {
                     gameList.splice(index, 1)
@@ -137,6 +138,7 @@ const addAllGames = async () => {
                 document.getElementById('editInputTitle').value = game.data.title
                 
                 // Clear all checkboxes
+                // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
                 document.querySelectorAll('#editModal .genre-select input[type="checkbox"]').forEach(checkbox => {
                     checkbox.checked = false
                 })
@@ -163,6 +165,7 @@ const addAllGames = async () => {
                 document.getElementById('editInputDescription').value = game.data.description
                 
                 // Clear all platform checkboxes
+                // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
                 document.querySelectorAll('#editModal .platform-select input[type="checkbox"]').forEach(checkbox => {
                     checkbox.checked = false
                 })
@@ -203,8 +206,9 @@ addForm.addEventListener('submit', (event) => {
     // Get values from form
     const title = document.getElementById('addInputTitle').value
     const selectedGenres = []
+    //https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
     document.querySelectorAll('.genre-select input[type="checkbox"]:checked').forEach(checkbox => {
-        // Get the genre identifier from the checkbox ID and remove 'selectGenre' before genre name and lower case first letter
+        // Get the genre id from the checkbox ID and remove 'selectGenre' before genre name and lower case first letter
         const genreId = checkbox.id.replace('selectGenre', '').toLowerCase()
         
         genres.forEach(genre => {
@@ -351,6 +355,7 @@ searchBox.addEventListener('keyup', () => {
 })
 
 // On search enter, can't use searchBox
+// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
 document.querySelector('form[role="search"]').addEventListener('submit', (event) => {
     // No page refresh on submit
     event.preventDefault()
@@ -358,7 +363,7 @@ document.querySelector('form[role="search"]').addEventListener('submit', (event)
 
 await addAllGames()
 
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search)
 const searchParam = urlParams.get('search')
 
 if (searchParam) {
