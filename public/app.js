@@ -5,6 +5,8 @@ const gamesContainer = document.querySelector('.games-container')
 const deleteRadioBtn = document.getElementById('delete')
 const addForm = document.querySelector('#addModal form')
 
+const searchBox = document.querySelector('form[role="search"] input[type="search"]');
+
 const gameList = []
 
 const platforms = [
@@ -225,6 +227,22 @@ editForm.addEventListener('submit', (event) => {
     })
 })
 
+searchBox.addEventListener('keyup', () => {
+    // Get search text and convert to lower case for search
+    const searchText = searchBox.value.toLowerCase();
+    
+    gameList.forEach(game => {
+        // First show all games
+        game.show()
+        
+        // Exclude empty search box
+        if (searchText !== '') {
+            // Hide games that do not match
+            game.search(searchText);
+        }
+    });
+});
+
 class Game {
     constructor(gameData) {
         this.data = gameData // All game properties
@@ -245,7 +263,7 @@ class Game {
     }
     
     search(query) {
-        if (!this.data.title.includes(query)) {
+        if (!this.data.title.toLowerCase().includes(query)) {
             this.element.setAttribute('hidden', '')
         }
     }
