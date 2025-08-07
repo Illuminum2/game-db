@@ -12,7 +12,7 @@ const connection = await mysql.createConnection({
 const executeSqlFile = async () => {
     try {
         // Modified file from PHPMyAdmin -> Table -> Export -> SQL
-        const sqlFilePath = path.join('./data/game-db.sql')
+        const sqlFilePath = path.join('./db/game-db.sql')
         // https://nodejs.org/en/learn/manipulating-files/reading-files-with-nodejs
         const sqlFile = await fs.readFile(sqlFilePath, 'utf-8')
     

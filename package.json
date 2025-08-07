@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "A game db",
-  "main": "backend.js",
+  "main": "src/backend.js",
   "scripts": {
-    "start": "node backend.js",
-    "dev": "nodemon backend.js",
-    "init": "node createDB.js"
+    "start": "node src/backend.js",
+    "dev": "nodemon src/backend.js",
+    "init": "node db/createDB.js"
   },
   "author": "Illuminum2",
   "license": "MIT",

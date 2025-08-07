@@ -28,13 +28,13 @@ This is a game database web app with a NodeJS backend and a MySQL DB. I made thi
    docker compose up -d
    ```
 
-   **Note:** The default MySQL root password is `secureDoNotChangeMe`. This can be changed by updating `docker-compose.yaml` and `createDB.js`.
+   **Note:** The default MySQL root password is `secureDoNotChangeMe`. This can be changed by updating `docker-compose.yaml` and `db/createDB.js`.
 
 4. **Set up the DB:**
    ```sh
    npm run init
    ```
-   Or manually import `data/game-db.sql` into your MySQL DB
+   Or manually import `db/game-db.sql` into your MySQL DB
 
 5. **Start the backend:**
    ```sh
